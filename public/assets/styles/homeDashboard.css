@@ -1,0 +1,2257 @@
+
+      .HomepageHeroGradient {
+        --gradientColorZero: #a960ee;
+        --gradientColorOne: #ff333d;
+        --gradientColorTwo: #90e0ff;
+        --gradientColorThree: #ffcb57;
+        --gradientColorZeroTransparent: rgba(169, 96, 238, 0);
+        --gradientColorOneTransparent: rgba(255, 51, 61, 0);
+        --gradientColorTwoTransparent: rgba(144, 224, 255, 0);
+        --gradientColorThreeTransparent: rgba(255, 203, 87, 0);
+        --gradientAngle: var(--angleStrong);
+        --gradientHeight: calc(
+          100% + var(--sectionPaddingTop) + var(--transformOriginX) *
+            var(--sectionAngleSin)
+        );
+        --offsetX: var(--gutterWidth);
+        --transformOriginX: -60px;
+        --sectionAngleSin: var(--angleStrongSin);
+        position: absolute;
+        bottom: 0;
+        top: auto;
+        left: calc(var(--offsetX) * -1);
+        width: var(--windowWidth);
+        height: var(--gradientHeight);
+        transform-origin: var(--transformOriginX) 100%;
+        transform: skewY(var(--gradientAngle));
+        overflow: hidden;
+        border: none;
+      }
+      @media (min-width: 600px) {
+        .HomepageHeroGradient {
+          --transformOriginX: calc(var(--gutterWidth) * 0.8);
+        }
+      }
+      .Gradient {
+        overflow: hidden;
+      }
+      .Gradient__canvas {
+        position: relative;
+        display: block;
+        width: inherit;
+        height: 100%;
+        opacity: 0;
+      }
+      .Gradient__canvas.isLoaded {
+        opacity: 1;
+        transition: opacity 1.8s ease-in 50ms;
+      }
+      .Gradient__guides {
+        --guideDashedColor: rgba(0, 0, 0, 0.3);
+        --guideSolidColor: rgba(0, 0, 0, 0.2);
+        mix-blend-mode: soft-light;
+      }
+      .Gradient:after {
+        content: "";
+        z-index: -1;
+        position: absolute;
+        top: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        min-width: 1000px;
+        width: 100%;
+        height: 100%;
+        background: radial-gradient(
+              var(--gradientColorZero) 40%,
+              var(--gradientColorTwoTransparent) 60%
+            ) -620px -180px no-repeat,
+          radial-gradient(
+              var(--gradientColorThree) 33%,
+              var(--gradientColorThreeTransparent) 67%
+            ) -120px -24px no-repeat,
+          radial-gradient(
+              var(--gradientColorTwo) 40%,
+              var(--gradientColorTwoTransparent) 70%
+            ) -470px 150px no-repeat,
+          var(--gradientColorZero);
+      }
+      @media (min-width: 600px) {
+        .Gradient:after {
+          background: radial-gradient(
+                var(--gradientColorZero) 40%,
+                var(--gradientColorTwoTransparent) 60%
+              ) -420px -180px no-repeat,
+            radial-gradient(
+                var(--gradientColorThree) 23%,
+                var(--gradientColorThreeTransparent) 70%
+              )
+              240px -24px no-repeat,
+            radial-gradient(
+                var(--gradientColorTwo) 30%,
+                var(--gradientColorTwoTransparent) 70%
+              ) -270px 220px no-repeat,
+            var(--gradientColorZero);
+        }
+      }
+      @media (min-width: 900px) {
+        .Gradient:after {
+          background: radial-gradient(
+                var(--gradientColorThree) 23%,
+                var(--gradientColorThreeTransparent) 67% 100%
+              )
+              385px -24px,
+            radial-gradient(
+                var(--gradientColorOne) 0,
+                var(--gradientColorOneTransparent) 60% 100%
+              ) -940px 290px,
+            radial-gradient(
+                var(--gradientColorTwo) 10%,
+                var(--gradientColorTwoTransparent) 60% 100%
+              ) -120px 250px,
+            radial-gradient(
+                var(--gradientColorOne) 40%,
+                var(--gradientColorOneTransparent) 57% 100%
+              )
+              495px -44px,
+            radial-gradient(
+                var(--gradientColorZero) 30%,
+                var(--gradientColorZeroTransparent) 67% 100%
+              )
+              122px -120px,
+            radial-gradient(
+                var(--gradientColorZero) 10%,
+                var(--gradientColorZeroTransparent) 60% 100%
+              ) -420px 120px,
+            radial-gradient(
+                var(--gradientColorTwo) 15%,
+                var(--gradientColorTwoTransparent) 50% 100%
+              ) -620px 0,
+            radial-gradient(
+                var(--gradientColorTwo) 25%,
+                var(--gradientColorTwoTransparent) 50% 100%
+              )
+              520px -250px,
+            var(--gradientColorZero);
+          background-repeat: repeat-y;
+        }
+      }
+      .Gradient.isLoaded:after {
+        transition: transform 1s 1s;
+        transform: translateX(-50%) scaleY(0.995);
+      }
+      .HomepageHeroGraphic {
+        position: relative;
+        z-index: 2;
+      }
+      .HomepageHeroGraphic__phone.PhoneGraphic {
+        --phoneWidth: 270px;
+        --phoneHeight: 536px;
+        position: relative;
+        margin-top: 60px;
+        left: 140px;
+      }
+      .HomepageHeroGraphic__dashboard {
+        position: absolute;
+        top: 0;
+        left: 253px;
+      }
+      .HomepageDashboardGraphic {
+        display: grid;
+        grid: auto/132px 1fr;
+        gap: 24px;
+        width: 975px;
+        padding: 24px 0 24px 24px;
+        border-radius: 8px;
+        background: linear-gradient(
+          hsla(0, 0%, 100%, 0.4),
+          hsla(0, 0%, 100%, 0.3) 25%,
+          rgba(246, 249, 252, 0.3) 50%,
+          #f6f9fc 60%
+        );
+        box-shadow: inset 0 1px 1px 0 hsla(0, 0%, 100%, 0.1),
+          0 50px 100px -20px rgba(50, 50, 93, 0.25),
+          0 30px 60px -30px rgba(0, 0, 0, 0.3);
+        font-size: 11px;
+        font-weight: 300;
+        letter-spacing: 0.2px;
+        line-height: 14px;
+        color: #425466;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        user-select: none;
+      }
+      .HomepageDashboardGraphic__company {
+        display: grid;
+        grid: max-content/auto-flow max-content;
+        gap: 8px;
+        align-items: center;
+        font-weight: 620;
+        color: #fff;
+        letter-spacing: 0.8px;
+        text-transform: uppercase;
+      }
+      .HomepageDashboardGraphic__header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 24px;
+        padding-right: 16px;
+      }
+      .HomepageDashboardGraphic__searchBar {
+        display: flex;
+        align-items: center;
+        border-radius: 4px;
+        height: 20px;
+        width: 278px;
+        background: #fff;
+        color: #62788d;
+      }
+      .HomepageDashboardGraphic__searchIcon {
+        width: 10px;
+        margin: 1px 5px 0 6px;
+      }
+      .HomepageDashboardGraphic__body {
+        display: grid;
+        grid: auto/1fr 20px;
+        gap: 12px;
+        margin-right: 12px;
+      }
+      .HomepageDashboardGraphic__content {
+        display: grid;
+        gap: 12px;
+      }
+      .HomepageDashboardGraphic__topSection {
+        background: #fff;
+        border-radius: 4px;
+        padding: 18px 20px 20px;
+      }
+      .HomepageDashboardGraphic__title {
+        font: var(--fontWeightBold) 17px/22.9px var(--fontFamily);
+        color: #414552;
+        border-bottom: 1px solid #ebeef1;
+        padding-bottom: 5px;
+      }
+      .HomepageDashboardGraphic__todaySection {
+        display: grid;
+        grid-template-columns: 2fr 1fr;
+        gap: 46px;
+        padding: 20px 0 0;
+      }
+      .HomepageDashboardGraphic__todaySection--right {
+        display: grid;
+        gap: 20px;
+      }
+      .HomepageDashboardGraphic__netVolumeLayout {
+        display: flex;
+        justify-content: space-between;
+        width: 255px;
+      }
+      .HomepageDashboardGraphic__copy--XSmall {
+        font: var(--fontWeightNormal) 10px/12px var(--fontFamily);
+        color: #727f96;
+      }
+      .HomepageDashboardGraphic__copy--XSmall b {
+        color: #15be53;
+        font: var(--fontWeightSemibold) 10px/12px var(--fontFamily);
+      }
+      .HomepageDashboardGraphic__copy--XSmallFancy {
+        color: #635bff;
+      }
+      .HomepageDashboardGraphic__copy--small {
+        font: var(--fontWeightNormal) 11px/14px var(--fontFamily);
+        letter-spacing: -0.1px;
+        color: #727f96;
+      }
+      .HomepageDashboardGraphic__copy--small b {
+        font: var(--fontWeightSemibold) 11px/14px var(--fontFamily);
+        letter-spacing: -0.1px;
+        color: #0a2540;
+      }
+      .HomepageDashboardGraphic__copy--smallInvoices {
+        font: var(--fontWeightNormal) 11px/14px var(--fontFamily);
+        letter-spacing: -0.1px;
+        color: #0a2540;
+      }
+      .HomepageDashboardGraphic__copy--smallHeaderFancy {
+        font: var(--fontWeightSemibold) 11px/14px var(--fontFamily);
+        color: #635bff;
+        align-self: start;
+        margin-top: 2px;
+      }
+      .HomepageDashboardGraphic__copy--medium {
+        font: var(--fontWeightNormal) 12px/15px var(--fontFamily);
+        letter-spacing: -0.1px;
+        color: #727f96;
+      }
+      .HomepageDashboardGraphic__copy--medium b {
+        font: var(--fontWeightBold) 12px/15px var(--fontFamily);
+        letter-spacing: -0.1px;
+        color: #0a2540;
+      }
+      .HomepageDashboardGraphic__copy--large,
+      .HomepageDashboardGraphic__copy--large b {
+        font: var(--fontWeightNormal) 14px/18px var(--fontFamily);
+        color: #0a2540;
+      }
+      .HomepageDashboardGraphic__flexGroup {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+      .HomepageDashboardGraphic__flexGroup--baseline {
+        align-items: baseline;
+      }
+      .HomepageDashboardGraphic__flexGroup--gap {
+        display: flex;
+        gap: 6px;
+        align-items: baseline;
+      }
+      .HomepageDashboardGraphic__flexGroup--gap svg {
+        flex-shrink: 0;
+      }
+      .HomepageDashboardGraphic__verticalSpacing {
+        margin-top: 4px;
+      }
+      .HomepageDashboardGraphic__mainGraphSvg {
+        margin-top: 8px;
+      }
+      .HomepageDashboardGraphic__graphTimeLayout {
+        display: flex;
+        justify-content: space-between;
+      }
+      .HomepageDashboardGraphic__mainGraph {
+        margin-top: 6px;
+      }
+      .HomepageDashboardGraphic__separator {
+        width: 100%;
+        height: 1px;
+        background: #ebeef1;
+      }
+      .HomepageDashboardGraphic__bottomSection {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 12px;
+      }
+      .HomepageDashboardGraphic__column {
+        background: #fff;
+        border-radius: 4px;
+        padding: 18px 16px 16px;
+      }
+      .HomepageDashboardGraphic__sideBar {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .HomepageDashboardGraphic__iconLayout {
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+      }
+      .HomepageDashboardGraphic__sectionGraph {
+        margin: 10px 0;
+      }
+      .HomepageDashboardGraphic__paymentsBar {
+        display: flex;
+        width: 100%;
+        height: 10px;
+        border-radius: 3.38px;
+        overflow: hidden;
+        margin-top: 5px;
+      }
+      .HomepageDashboardGraphic__lineItem {
+        border-bottom: 1px solid #ebeef1;
+        padding: 10px 0;
+      }
+      .HomepageDashboardGraphic__block {
+        width: 8px;
+        height: 8px;
+        border-radius: 2.54px;
+        background: #96f;
+      }
+      .HomepageDashboardGraphic__block--blue {
+        background: #0073e6;
+      }
+      .HomepageDashboardGraphic__block--teal {
+        background: #00c4c4;
+      }
+      .HomepageDashboardGraphic__paymentsBar--purple {
+        width: 40%;
+        height: 100%;
+        background: #96f;
+      }
+      .HomepageDashboardGraphic__paymentsBar--blue {
+        width: 40%;
+        height: 100%;
+        background: #0073e6;
+      }
+      .HomepageDashboardGraphic__paymentsBar--teal {
+        width: 20%;
+        height: 100%;
+        background: #00c4c4;
+      }
+      .HomepageDashboardGraphic__updatedTime {
+        margin-top: 10px;
+      }
+      .CheckoutPhoneGraphic {
+        --checkoutPhoneVerticalPadding: 5px;
+        --checkoutPhoneInputMinHeight: 24px;
+        --checkoutPhoneFontSize: 11px;
+        --checkoutPhoneContainerPaddingVertical: 24px;
+        --checkoutPhoneContainerPaddingHorizontal: 16px;
+        --checkoutPhoneBackToArrowHeight: 8px;
+        --checkoutPhonePayButtonColor: #0a2540;
+      }
+      html[lang*="ja"] .CheckoutPhoneGraphic {
+        --checkoutPhoneFontSize: 10px;
+      }
+      .CheckoutPhoneGraphic {
+        height: 100%;
+        padding: var(--checkoutPhoneContainerPaddingVertical)
+          var(--checkoutPhoneContainerPaddingHorizontal);
+        border-radius: 28px;
+        background: #fff;
+        font-size: var(--checkoutPhoneFontSize);
+        font-weight: var(--fontWeightNormal);
+        letter-spacing: 0.2px;
+      }
+      .CheckoutPhoneGraphic--scaleLarge {
+        --checkoutPhoneVerticalPadding: 8px;
+        --checkoutPhoneInputMinHeight: 28px;
+        --checkoutPhoneFontSize: 13px;
+        --checkoutPhoneBackToArrowHeight: 10px;
+      }
+      .CheckoutPhoneGraphic--scaleLarge .CheckoutPhoneGraphic__applePay {
+        height: 16px;
+      }
+      .CheckoutPhoneGraphic--logo {
+        padding-top: 0;
+      }
+      .CheckoutPhoneGraphic__backTo {
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        margin: -10px 0 20px;
+      }
+      .CheckoutPhoneGraphic__backToArrow {
+        margin-right: var(--checkoutPhoneBackToArrowHeight);
+        height: var(--checkoutPhoneBackToArrowHeight);
+        width: auto;
+      }
+      .CheckoutPhoneGraphic__backTo + .CheckoutPhoneGraphic__image {
+        margin-top: 20px;
+        height: 60px;
+      }
+      .CheckoutPhoneGraphic__logo {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 60px;
+      }
+      .CheckoutPhoneGraphic__image {
+        display: flex;
+        justify-content: center;
+        height: 80px;
+      }
+      .CheckoutPhoneGraphic__image .Picture {
+        border-radius: 4px;
+        overflow: hidden;
+      }
+      .CheckoutPhoneGraphic__description {
+        margin-top: 15px;
+        text-align: center;
+        color: #0a2540;
+        font-weight: var(--fontWeightSemibold);
+      }
+      .CheckoutPhoneGraphic__price {
+        margin: 2px 0 16px;
+        text-align: center;
+      }
+      .CheckoutPhoneGraphic__button {
+        border-radius: 4px;
+        padding: var(--checkoutPhoneVerticalPadding) 0;
+        text-align: center;
+        font-weight: var(--fontWeightSemibold);
+        color: #fff;
+        background: var(--checkoutPhonePayButtonColor);
+        box-shadow: 0 2px 4px -1px rgba(50, 50, 93, 0.25),
+          0 1px 3px -1px rgba(0, 0, 0, 0.3);
+      }
+      .CheckoutPhoneGraphic__buttonsContainer {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+      }
+      .CheckoutPhoneGraphic__button {
+        display: grid;
+        place-items: center;
+      }
+      .CheckoutPhoneGraphic__linkButton {
+        background-color: #33ddb3;
+      }
+      .CheckoutPhoneGraphic__applePay {
+        display: block;
+        height: 14px;
+        margin: 0 auto;
+      }
+      .CheckoutPhoneGraphic__separator {
+        margin: 16px 0 12px;
+        text-align: center;
+        background: linear-gradient(#e6ebf1, #e6ebf1) no-repeat 0 50%/100% 1px;
+      }
+      .CheckoutPhoneGraphic__separatorTitle {
+        display: inline;
+        padding: 0 6px;
+        background: #fff;
+      }
+      .CheckoutPhoneGraphic__input {
+        min-height: var(--checkoutPhoneInputMinHeight);
+        line-height: var(--checkoutPhoneInputMinHeight);
+        margin: 6px 0 16px;
+        color: #62788d;
+        border-radius: 4px;
+        box-shadow: 0 0 0 1px rgba(50, 50, 93, 0.07),
+          0 2px 3px -1px rgba(50, 50, 93, 0.12),
+          0 1px 3px -1px rgba(0, 0, 0, 0.12);
+      }
+      .CheckoutPhoneGraphic__input--card {
+        display: grid;
+        grid: auto/repeat(2, 1fr);
+      }
+      .CheckoutPhoneGraphic__placeholder {
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-auto-flow: column;
+        padding-left: 8px;
+      }
+      .CheckoutPhoneGraphic__placeholder--number {
+        gap: 0 6px;
+        grid-area: auto/span 2;
+        align-items: center;
+        padding-right: 6px;
+        border-bottom: 1px solid #e6ebf1;
+      }
+      .CheckoutPhoneGraphic__placeholder--cvc {
+        padding-right: 4px;
+        border-left: 1px solid #e6ebf1;
+        white-space: nowrap;
+      }
+      .CheckoutPhoneGraphic__cvcIcon {
+        margin: 4px 0 0 4px;
+      }
+      .CheckoutPhoneGraphic__input--country {
+        margin-bottom: 24px;
+      }
+      .CheckoutPhoneGraphic__placeholder--country {
+        align-items: center;
+        padding-right: 9px;
+        border-bottom: 1px solid #e6ebf1;
+      }
+      .ApplePaySheet {
+        --paysheetCancelButtonSize: 13px;
+        --paysheetLogoWidth: 39px;
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+      }
+      .ApplePaySheet--isHidden .ApplePaySheet__overlay,
+      .ApplePaySheet--isHidden .ApplePaySheet__sheet {
+        opacity: 0;
+        pointer-events: none;
+      }
+      .ApplePaySheet--isHidden .ApplePaySheet__overlay .Face,
+      .ApplePaySheet--isHidden .ApplePaySheet__sheet .Face {
+        pointer-events: none;
+      }
+      .ApplePaySheet__overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+        background: #0b3055;
+        opacity: 0.2;
+      }
+      .ApplePaySheet__sheet {
+        background: #fff;
+        box-shadow: 0 6px 12px -2px rgba(50, 50, 93, 0.12),
+          0 3px 7px -3px rgba(0, 0, 0, 0.15);
+        border-radius: 8px 8px 30px 30px;
+        position: absolute;
+        right: 4px;
+        bottom: 4px;
+        left: 4px;
+      }
+      .ApplePaySheet__row {
+        display: grid;
+        grid: auto/54px 1fr auto;
+        gap: 16px;
+        margin-left: 12px;
+        padding: 8px 12px 8px 0;
+        border-bottom: 1px solid #e6ebf1;
+        font-size: 10px;
+        letter-spacing: 0.3px;
+        font-weight: 300;
+      }
+      .ApplePaySheet__row--header {
+        grid: auto/1fr auto;
+        align-items: center;
+      }
+      .ApplePaySheet__logo {
+        width: var(--paysheetLogoWidth);
+      }
+      .ApplePaySheet__cancelButton {
+        font-size: var(--paysheetCancelButtonSize);
+        letter-spacing: 0.2px;
+        color: #2a69fe;
+      }
+      .ApplePaySheet__checkoutInfo,
+      .ApplePaySheet__checkoutLabel {
+        text-transform: uppercase;
+        line-height: 16px;
+      }
+      .ApplePaySheet__checkoutLabel {
+        text-align: right;
+        color: #66788f;
+        text-overflow: ellipsis;
+        overflow: hidden;
+      }
+      .ApplePaySheet__checkoutInfo {
+        color: #425466;
+      }
+      .ApplePaySheet__checkoutArrow {
+        width: 6px;
+        align-self: center;
+      }
+      .ApplePaySheet__faceID {
+        position: relative;
+        display: flex;
+        justify-content: center;
+        margin: 12px auto;
+        height: 40px;
+      }
+      .Face {
+        cursor: pointer;
+        pointer-events: auto;
+        transform-origin: 50% 0;
+        transform: scale(0.37);
+      }
+      @media (prefers-reduced-motion: reduce) {
+        .Face.is-active {
+          --faceAnimationDisabled: none;
+        }
+      }
+      .Face__borders {
+        width: 100px;
+        height: 100px;
+        transform-origin: 50% 50%;
+      }
+      .is-resting.Face .Face__borders {
+        animation: var(
+          --faceAnimationDisabled,
+          border-rest 1s ease-in-out forwards infinite
+        );
+      }
+      .Face__border--copy path,
+      .Face__border path {
+        transition: d 0.2s, stroke 0.2s;
+      }
+      .Face__border {
+        opacity: 1;
+      }
+      .Face__border,
+      .Face__border--copy {
+        transition: opacity 0.4s;
+        transform-origin: 50%;
+      }
+      .Face__border--copy {
+        opacity: 0;
+      }
+      .Face path {
+        stroke: #999;
+        stroke-width: 4px;
+        fill: none;
+        stroke-linecap: round;
+      }
+      .Face__check {
+        width: 100px;
+        height: 100px;
+      }
+      .Face__check path {
+        stroke-linecap: square;
+        stroke-width: 6px;
+        stroke-dashoffset: 60px;
+        stroke-dasharray: 60px 60px;
+      }
+      .Face.is-checked .Face__check path {
+        stroke-dashoffset: 0;
+        transition: 0.4s;
+      }
+      .Face.is-checked .Face__phone {
+        opacity: 0 !important;
+      }
+      .Face.is-active path,
+      .Face.is-active rect {
+        stroke: #0278fc;
+      }
+      .Face__phone {
+        transition: 0.25s ease-out;
+      }
+      .Face svg {
+        position: absolute;
+        left: 0;
+        top: 0;
+      }
+      .Face__phoneContainer {
+        position: absolute;
+        left: 10px;
+        top: 10px;
+        width: 80px;
+        height: 80px;
+        border-radius: 50%;
+        overflow: hidden;
+        transform: translateZ(0);
+      }
+      .Face.is-phone .Face__phone {
+        opacity: 1;
+        transform: perspective(500px) translateY(12px) rotateX(0deg);
+        animation: var(
+          --faceAnimationDisabled,
+          phone-tap 2.7s ease-in-out forwards infinite 0.4s
+        );
+      }
+      .Face .Face__phoneClip,
+      .Face .Face__phoneGlare,
+      .Face .Face__phoneIcon {
+        transform-origin: 50% 50%;
+        transform: translateY(0);
+      }
+      .Face.is-phone .Face__phoneClip,
+      .Face.is-phone .Face__phoneGlare,
+      .Face.is-phone .Face__phoneIcon {
+        transform: translateY(-76px);
+        transition: 0.3s ease-out;
+      }
+      .Face path.Face__phoneGlare {
+        fill: #e7f0f9;
+        stroke: none;
+      }
+      .Face.is-phone .Face__phoneGlare {
+        animation: var(
+          --faceAnimationDisabled,
+          phone-shimmer 2.7s ease-in-out forwards infinite 0.4s
+        );
+      }
+      .Face.is-phone .Face__features {
+        transform: perspective(500px) rotateX(-30deg) translateY(-10px);
+        transition: 0.3s;
+        opacity: 0;
+      }
+      .Face__text span:first-of-type {
+        opacity: 1;
+        transition: 0.3s;
+      }
+      .Face__text span:last-of-type {
+        position: absolute;
+        opacity: 0;
+        transition: 0.3s;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        white-space: nowrap;
+      }
+      .Face.is-phone .Face__text span:first-of-type {
+        opacity: 0;
+      }
+      .Face.is-phone .Face__text span:last-of-type {
+        opacity: 1;
+      }
+      .Face.is-phone.is-checked .Face__text span {
+        opacity: 0;
+      }
+      .Face.is-active rect {
+        stroke-width: 2.25;
+      }
+      .Face__features {
+        transition: 0.3s;
+        transform-origin: 50% 50%;
+      }
+      .Face__features.is-hidden {
+        opacity: 0;
+      }
+      .Face__features.is-hidden .Face__eye,
+      .Face__features.is-hidden .Face__mouth {
+        transition: 0.2s;
+      }
+      .Face__eye {
+        stroke-width: 5.5 !important;
+      }
+      .Face__text {
+        position: relative;
+        margin-top: 10px;
+        text-align: center;
+        font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto,
+          Helvetica Neue, Ubuntu, sans-serif;
+        font-size: 28px;
+        color: var(--slate5);
+      }
+      @keyframes phone-tap {
+        0% {
+          transform: perspective(500px) translateY(12px) rotateX(0deg);
+        }
+        50% {
+          transform: perspective(500px) translateY(12px) rotateX(48deg)
+            scale(0.9);
+        }
+        to {
+          transform: perspective(500px) translateY(12px) rotateX(0deg);
+        }
+      }
+      @keyframes border-rest {
+        0% {
+          transform: scale(1);
+        }
+        50% {
+          transform: scale(1.05);
+        }
+        to {
+          transform: scale(1);
+        }
+      }
+      @keyframes phone-shimmer {
+        0% {
+          transform: skewY(40deg) translateY(-66px);
+        }
+        50% {
+          transform: skewY(40deg) translateY(10px);
+        }
+        to {
+          transform: skewY(40deg) translateY(-66px);
+        }
+      }
+      .PhoneGraphic {
+        --phoneBorderRadius: 36px;
+        --phoneScreenBorderRadius: 29px;
+        --phoneWidth: 264px;
+        --phoneHeight: 533px;
+        --phoneGraphicShadow: 0 50px 100px -20px rgba(50, 50, 93, 0.25),
+          0 30px 60px -30px rgba(0, 0, 0, 0.3),
+          inset 0 -2px 6px 0 rgba(10, 37, 64, 0.35);
+        width: var(--phoneWidth);
+        height: var(--phoneHeight);
+        padding: 8px;
+        border-radius: var(--phoneBorderRadius);
+        background: #f6f9fc;
+        box-shadow: var(--phoneGraphicShadow);
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        user-select: none;
+        font-size: 16px;
+      }
+      .HubPage .PhoneGraphic {
+        --phoneGraphicShadow: 0px 20px 39px -20px rgba(0, 0, 0, 0.3),
+          0px 32px 66px -13px rgba(50, 50, 93, 0.25),
+          0px -1px 3px 0px rgba(10, 37, 64, 0.35) inset;
+      }
+      .PhoneGraphic--scaleLarge {
+        --phoneWidth: 301px;
+        --phoneHeight: 615px;
+        border-radius: 42px;
+      }
+      .PhoneGraphic__screen {
+        position: relative;
+        height: 100%;
+        border-radius: var(--phoneScreenBorderRadius);
+        -webkit-mask-image: -webkit-radial-gradient(#fff, #000);
+        background: #fff;
+      }
+      .ColumnLayout {
+        --columnRowGap: var(--rowGapLarge);
+        display: grid;
+        row-gap: var(--columnRowGap);
+        align-items: flex-start;
+      }
+      .HubPage .ColumnLayout {
+        -moz-column-gap: var(--gridColumnGap);
+        column-gap: var(--gridColumnGap);
+      }
+      .ColumnLayout--alignCenter {
+        align-items: center;
+      }
+      .ColumnLayout--alignBottom {
+        align-items: flex-end;
+      }
+      .ColumnLayout--alignStretch {
+        align-items: stretch;
+      }
+      @media (min-width: 600px) {
+        .ColumnLayout[data-columns="1,1,1"],
+        .ColumnLayout[data-columns="1,1,1,1"],
+        .ColumnLayout[data-columns="2,1"],
+        .ColumnLayout[data-columns="2,1,0"],
+        .ColumnLayout[data-columns="2,1,1"],
+        .ColumnLayout[data-columns="2,2"],
+        .ColumnLayout[data-columns="3,2"] {
+          grid-template-columns: repeat(2, 1fr);
+        }
+      }
+      @media (max-width: 599px) {
+        .ColumnLayout[data-columns="2,2"].ColumnLayout--reflowDirectionRightToLeft
+          > :first-child {
+          order: 1;
+        }
+      }
+      @media (max-width: 899px) {
+        .ColumnLayout[data-columns="1,3"]:not(
+            .ColumnLayout--reflowDirectionLeftToRight
+          )
+          > :first-child,
+        .ColumnLayout[data-columns="3,1"].ColumnLayout--reflowDirectionRightToLeft
+          > :first-child,
+        .ColumnLayout[data-columns="3,2"].ColumnLayout--reflowDirectionRightToLeft
+          > :first-child {
+          order: 1;
+        }
+      }
+      @media (min-width: 600px) and (max-width: 899px) {
+        .ColumnLayout[data-columns-tablet="1"] {
+          grid-template-columns: 1fr;
+        }
+        .ColumnLayout[data-columns-tablet="3,1"] {
+          grid-template-columns: 3fr 1fr;
+        }
+        .ColumnLayout[data-columns="2,1,1"] > :first-child {
+          grid-area: 1 / span 2;
+        }
+      }
+      @media (min-width: 900px) {
+        .ColumnLayout[data-columns="1,1,1"] {
+          grid-template-columns: repeat(3, 1fr);
+        }
+        .ColumnLayout[data-columns="2,1"] {
+          grid-template-columns: 2fr 1fr;
+        }
+        .ColumnLayout[data-columns="1,1,1,1"] {
+          grid-template-columns: repeat(4, 1fr);
+        }
+        .ColumnLayout[data-columns="1,1"] {
+          grid-template-columns: repeat(2, 1fr);
+        }
+        .ColumnLayout[data-columns="1,3"] {
+          grid-template-columns: 1fr minmax(0, 3fr);
+        }
+        .ColumnLayout[data-columns="3,1"] {
+          grid-template-columns: 3fr 1fr;
+        }
+        .ColumnLayout[data-columns="2,1,1"] {
+          grid-template-columns: 2fr repeat(2, 1fr);
+        }
+        .ColumnLayout[data-columns="2,1,0"] {
+          grid-template-columns: 2fr 1fr 1fr;
+        }
+        .ColumnLayout[data-columns="1,2,1"] {
+          grid-template-columns: 1fr 2fr 1fr;
+        }
+      }
+      @media (min-width: 1112px) {
+        .ColumnLayout[data-columns="3,2"] {
+          grid-template-columns: 3fr 2fr;
+          min-width: calc(var(--columnWidth) * 5);
+        }
+      }
+      .HubPage .ColumnLayout[data-columns="2,1"] {
+        grid-template-columns: repeat(var(--gridColumnCount), 1fr);
+      }
+      .HubPage .ColumnLayout[data-columns="2,1"] > :nth-child(n) {
+        grid-column: 1/-1;
+      }
+      @media (min-width: 900px) {
+        .HubPage .ColumnLayout[data-columns="2,1"] > :nth-child(odd) {
+          grid-column: span 8;
+        }
+        .HubPage .ColumnLayout[data-columns="2,1"] > :nth-child(2n) {
+          grid-column: span 4;
+        }
+      }
+      .HubPage .ColumnLayout[data-columns="1,1,1"] {
+        grid-template-columns: repeat(var(--gridColumnCount), 1fr);
+      }
+      .HubPage .ColumnLayout[data-columns="1,1,1"] > :nth-child(n) {
+        grid-column: span 4;
+      }
+      .Section {
+        --sectionAngleSin: var(--angleNormalSin);
+        --sectionAngle: 0;
+        --sectionPaddingSmallMax: 110;
+        --sectionPaddingXSmallMax: 72;
+        --sectionPaddingMin: 72;
+        --sectionPaddingMax: var(--sectionPaddingNormalMax);
+        --sectionPaddingTopMax: var(--sectionPaddingMax);
+        --sectionPaddingBottomMax: var(--sectionPaddingMax);
+        --sectionMarginBottom: 0;
+        --sectionAngleHeight: calc(var(--windowWidth) * var(--sectionAngleSin));
+        --sectionAnglePaddingBaseMin: 100;
+        --sectionAnglePaddingBaseMax: var(--sectionPaddingMax);
+        --sectionAnglePaddingTopBaseMax: var(--sectionAnglePaddingBaseMax);
+        --sectionAnglePaddingBottomBaseMax: var(--sectionAnglePaddingBaseMax);
+        --sectionAngleMaxHeight: none;
+        --sectionOverflow: hidden;
+        --sectionTransformOrigin: 100% 0;
+        --sectionBackgroundOverflow: visible;
+        position: relative;
+        z-index: 1;
+        margin-bottom: var(--sectionMarginBottom);
+        color: var(--textColor);
+        scroll-margin-top: calc(
+          var(--fixedNavHeight) + var(--fixedNavSpacing) -
+            var(--sectionPaddingTop)
+        );
+      }
+      .HubPage .Section,
+      .Section {
+        --sectionPaddingNormalMax: 128;
+      }
+      .HubPage .Section {
+        --sectionPaddingSmallMax: 112;
+        --sectionPaddingXSmallMax: 96;
+        --sectionPaddingMin: 96;
+      }
+      .Section--hasStickyNav {
+        --sectionOverflow: visible;
+      }
+      .Section--hasBorderTop .Section__background {
+        border-top: 1px solid rgba(230, 235, 241, 0.52);
+      }
+      .Section--paddingSmall {
+        --sectionPaddingMax: var(--sectionPaddingSmallMax);
+      }
+      .Section--paddingXSmall {
+        --sectionPaddingMax: var(--sectionPaddingXSmallMax);
+      }
+      .Section {
+        --sectionAnglePaddingTopBase: calc(
+          var(--sectionAnglePaddingBaseMin) * 1px +
+            (
+              var(--sectionAnglePaddingTopBaseMax) -
+                var(--sectionAnglePaddingBaseMin)
+            ) * (var(--windowWidth) / 737 - 0.50882px)
+        );
+        --sectionAnglePaddingBottomBase: calc(
+          var(--sectionAnglePaddingBaseMin) * 1px +
+            (
+              var(--sectionAnglePaddingBottomBaseMax) -
+                var(--sectionAnglePaddingBaseMin)
+            ) * (var(--windowWidth) / 737 - 0.50882px)
+        );
+        --sectionPaddingTopGutterWidth: var(--gutterWidth);
+        --sectionAnglePaddingTop: calc(
+          var(--sectionAngleHeight) - var(--sectionAngleSin) *
+            var(--sectionPaddingTopGutterWidth) +
+            var(--sectionAnglePaddingTopBase)
+        );
+        --sectionAnglePaddingBottom: calc(
+          var(--sectionAngleHeight) - var(--sectionAngleSin) *
+            var(--gutterWidth) + var(--sectionAnglePaddingBottomBase)
+        );
+        --sectionPaddingTop: calc(
+          var(--sectionPaddingMin) * 1px +
+            (var(--sectionPaddingTopMax) - var(--sectionPaddingMin)) *
+            (var(--windowWidth) / 737 - 0.50882px)
+        );
+        --sectionPaddingBottom: calc(
+          var(--sectionPaddingMin) * 1px +
+            (var(--sectionPaddingBottomMax) - var(--sectionPaddingMin)) *
+            (var(--windowWidth) / 737 - 0.50882px)
+        );
+      }
+      @media (max-width: 375px) {
+        .Section {
+          --sectionAnglePaddingTopBase: calc(
+            var(--sectionAnglePaddingBaseMin) * 1px
+          );
+          --sectionAnglePaddingBottomBase: calc(
+            var(--sectionAnglePaddingBaseMin) * 1px
+          );
+          --sectionPaddingTop: calc(var(--sectionPaddingMin) * 1px);
+          --sectionPaddingBottom: calc(var(--sectionPaddingMin) * 1px);
+        }
+      }
+      @media (min-width: 1112px) {
+        .Section {
+          --sectionAnglePaddingTopBase: calc(
+            var(--sectionAnglePaddingTopBaseMax) * 1px
+          );
+          --sectionAnglePaddingBottomBase: calc(
+            var(--sectionAnglePaddingBottomBaseMax) * 1px
+          );
+          --sectionPaddingTop: calc(var(--sectionPaddingTopMax) * 1px);
+          --sectionPaddingBottom: calc(var(--sectionPaddingBottomMax) * 1px);
+        }
+      }
+      .Section__background {
+        position: relative;
+        height: 100%;
+        max-height: var(--sectionAngleMaxHeight);
+        width: 100%;
+        top: 0;
+        left: 0;
+        transform-origin: var(--sectionTransformOrigin);
+        transform: skewY(var(--sectionAngle));
+        background: var(--backgroundColor);
+        overflow: hidden;
+      }
+      .Section__background--isTransparent {
+        background: hsla(0, 0%, 100%, 0.2);
+        -webkit-backdrop-filter: blur(7px);
+        backdrop-filter: blur(7px);
+      }
+      .Section__masked {
+        overflow: var(--sectionOverflow);
+      }
+      .Section__container {
+        position: relative;
+        z-index: 1;
+        display: flex;
+        justify-content: center;
+        min-height: var(--sectionMinHeight);
+      }
+      .Section__layoutContainer {
+        width: 100%;
+        max-width: var(--layoutWidth);
+        margin: 0 var(--columnPaddingNormal);
+      }
+      .Section__layout {
+        padding: var(--sectionPaddingTop) 0 var(--sectionPaddingBottom);
+      }
+      .Section--angleTop {
+        --sectionPaddingTop: var(--sectionAnglePaddingTop);
+        --sectionAngle: var(--angleNormal);
+      }
+      .Section--angleBottom {
+        --sectionTransformOrigin: 0 0;
+      }
+      .Section--angleBoth,
+      .Section--angleBottom {
+        --sectionPaddingBottom: var(--sectionAnglePaddingBottom);
+        --sectionMarginBottom: calc(var(--sectionAngleHeight) * -1);
+      }
+      .Section--angleBoth {
+        --sectionPaddingTop: var(--sectionAnglePaddingTop);
+        --sectionAngle: var(--angleNormal);
+      }
+      .Section--bleed3 {
+        --sectionPaddingBottom: 0;
+      }
+      .Section__backgroundMask {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        overflow: var(--sectionBackgroundOverflow);
+      }
+      .Section--paddingTopNone {
+        --sectionPaddingTop: 0;
+      }
+      .Section--paddingTopXXLarge {
+        --sectionPaddingTop: 160px;
+      }
+      @media (min-width: 600px) {
+        .Section--paddingTopXXLarge {
+          --sectionPaddingTop: calc(90px + 15vw);
+        }
+      }
+      .Section--paddingBottomNone {
+        --sectionPaddingBottom: 0;
+      }
+      .UserLogoGrid {
+        --gridColumnCount: 2;
+        --gridRowGap: 60px;
+        display: grid;
+        grid: auto/repeat(var(--gridColumnCount), 1fr);
+        justify-items: center;
+        align-items: center;
+        row-gap: var(--gridRowGap);
+      }
+      @media (min-width: 672px) {
+        .UserLogoGrid {
+          --gridColumnCount: 4;
+        }
+      }
+      .TrackingSandbox {
+        width: 1px;
+        height: 1px;
+        position: fixed;
+        visibility: hidden;
+        pointer-events: none;
+      }
+      .LiveChatSandbox {
+        position: fixed;
+        bottom: 0;
+        right: 0;
+        height: 0;
+        border: 0;
+        z-index: 99;
+        overflow: hidden;
+      }
+
+      @media (min-width: 600px) {
+        @font-face {
+          font-family: sohne-var;
+          src: url(https://b.dialogicacdn.com/mkt-statics-srv/assets/f965fdf4.woff2)
+            format("woff2-variations");
+          font-weight: 1 1000;
+          font-display: block;
+        }
+        @font-face {
+          font-family: SourceCodePro;
+          src: url(https://b.dialogicacdn.com/mkt-statics-srv/assets/1a930247.woff2)
+              format("woff2"),
+            url(https://b.dialogicacdn.com/mkt-statics-srv/assets/ac6713d5.woff)
+              format("woff");
+          font-weight: 500;
+          font-style: normal;
+          font-display: block;
+        }
+      }
+      @media (max-width: 599px) {
+        @font-face {
+          font-family: sohne-var;
+          src: url(https://b.dialogicacdn.com/mkt-statics-srv/assets/f965fdf4.woff2)
+            format("woff2-variations");
+          font-weight: 1 1000;
+          font-display: swap;
+        }
+        @font-face {
+          font-family: SourceCodePro;
+          src: url(https://b.dialogicacdn.com/mkt-statics-srv/assets/1a930247.woff2)
+              format("woff2"),
+            url(https://b.dialogicacdn.com/mkt-statics-srv/assets/ac6713d5.woff)
+              format("woff");
+          font-weight: 500;
+          font-style: normal;
+          font-display: swap;
+        }
+      }
+      .MktRoot {
+        --fontFamily: "sohne-var", "Helvetica Neue", "Arial", sans-serif;
+        --fontWeightLight: 200;
+        --fontWeightNormal: 300;
+        --fontWeightSemibold: 425;
+        --fontWeightBold: 500;
+        --systemFontFamily: -apple-system, BlinkMacSystemFont, "Segoe UI",
+          Roboto, "Helvetica Neue", Arial, sans-serif;
+        --codeFontFamily: "SourceCodePro";
+        --sourceCodeFont: 500 14px/1.714285714 var(--codeFontFamily);
+        --ctaFont: var(--fontWeightSemibold) 15px/1.6 var(--fontFamily);
+        --inputFont: var(--fontWeightNormal) 15px/1.6 var(--fontFamily);
+        --cardShadowXSmall: 0 2px 5px -1px rgba(50, 50, 93, 0.25),
+          0 1px 3px -1px rgba(0, 0, 0, 0.3);
+        --cardShadowSmall: 0 6px 12px -2px rgba(50, 50, 93, 0.25),
+          0 3px 7px -3px rgba(0, 0, 0, 0.3);
+        --cardShadowMedium: 0 13px 27px -5px rgba(50, 50, 93, 0.25),
+          0 8px 16px -8px rgba(0, 0, 0, 0.3);
+        --cardShadowLarge: 0 30px 60px -12px rgba(50, 50, 93, 0.25),
+          0 18px 36px -18px rgba(0, 0, 0, 0.3);
+        --cardShadowLargeInset: inset 0 30px 60px -12px rgba(50, 50, 93, 0.25),
+          inset 0 18px 36px -18px rgba(0, 0, 0, 0.3);
+        --cardShadowXLarge: 0 50px 100px -20px rgba(50, 50, 93, 0.25),
+          0 30px 60px -30px rgba(0, 0, 0, 0.3);
+        --cardShadowXSMallMargin: 2px;
+        --cardShadowSmallMargin: 8px;
+        --cardShadowMediumMargin: 16px;
+        --cardShadowLargeMargin: 32px;
+        --cardShadowXLargeMargin: 48px;
+        --cardBorderRadius: 8px;
+        --filterShadowMedium: 0px 3px 11.5px -3.5px rgba(50, 50, 93, 0.25),
+          0px 3.8px 7.5px -3.7px rgba(0, 0, 0, 0.1);
+        --scrollbarOffset: 10px;
+        --angleNormal: -6deg;
+        --angleStrong: -12deg;
+        --angleNormalSin: 0.106;
+        --angleStrongSin: 0.212;
+        --modalZIndex: 999999;
+        --fixedNavHeight: 60px;
+        --fixedNavSpacing: 48px;
+        --fixedNavScrollMargin: calc(
+          var(--fixedNavHeight) + var(--fixedNavSpacing)
+        );
+        --hoverTransition: 150ms cubic-bezier(0.215, 0.61, 0.355, 1);
+        --focusBoxShadow: 0 0 0 2px #4d90fe,
+          inset 0 0 0 2px hsla(0, 0%, 100%, 0.9);
+        color-scheme: only light;
+      }
+      .MktRoot *,
+      .MktRoot :after,
+      .MktRoot :before {
+        box-sizing: border-box;
+      }
+      @media (prefers-reduced-motion: reduce) {
+        .MktRoot {
+          --hoverTransition: none;
+        }
+      }
+      .MktRoot[lang^="ja"] {
+        --fontWeightNormal: 300;
+        --fontWeightSemibold: 300;
+      }
+      .MktRoot[lang^="th"] {
+        --fontWeightSemibold: 600;
+        --fontWeightBold: 600;
+      }
+      .MktRoot[lang^="zh"] {
+        --fontWeightNormal: 400;
+        --fontWeightSemibold: 500;
+      }
+      .MktRoot[data-loading] {
+        overflow-x: hidden;
+      }
+      .MktRoot[data-loading] :after,
+      .MktRoot[data-loading] :before,
+      .MktRoot[data-loading] :not([data-transition-in]) {
+        transition: none !important;
+      }
+      .MktBody {
+        margin: 0;
+        font-family: var(--fontFamily);
+        font-weight: var(--fontWeightNormal);
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        color: var(--textColor);
+        background: var(--backgroundColor);
+      }
+      .MktBody--locked {
+        overflow: hidden;
+      }
+      .ThirdPartyFrame {
+        width: 1px;
+        height: 1px;
+        position: fixed;
+        visibility: hidden;
+        pointer-events: none;
+      }
+      blockquote,
+      figure,
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6,
+      p,
+      pre {
+        margin: 0;
+      }
+      a {
+        text-decoration: none;
+      }
+      strong {
+        font-weight: var(--fontWeightBold);
+      }
+      .theme--White {
+        --backgroundColor: #fff;
+        --linkColor: var(--accentColor);
+        --linkHoverColor: #0a2540;
+        --buttonColor: var(--accentColor);
+        --buttonHoverColor: #0a2540;
+        --buttonDisabledColor: #cfd7df;
+        --buttonDisabledOpacity: 0.7;
+        --knockoutColor: #fff;
+        --knockoutDisabledColor: #8898aa;
+        --guideSolidColor: rgba(66, 71, 112, 0.06);
+        --guideDashedColor: rgba(66, 71, 112, 0.09);
+        --titleColor: #0a2540;
+        --textColor: #425466;
+        --formFieldDescriptionTextColor: #3f4b66;
+        --inputBackground: #f6f9fc;
+        --checkboxInputBackground: #e7ecf1;
+        --inputPlaceholderColor: #727f96;
+        --inputTextColor: #0a2540;
+        --inputErrorAccentColor: #ff5996;
+        --annotationColor: #8c9eb1;
+        --maskFadeColor: rgba(0, 0, 0, 0.4);
+        --navColor: #0a2540;
+        --navHoverColor: #0a2540;
+        --navHoverOpacity: 0.6;
+        --footerColor: #0a2540;
+        --cardBorderColor: #cbd6e0;
+        --cardBackground: #fff;
+        --subcardBackground: #f6f9fc;
+        --gridSubcardBackground: #f6f9fc;
+        --tableIconColor: #8c9eb1;
+        --dialogicaAccentWhite: #fff;
+        --dialogicaAccentLight: #e3e7ec;
+        --dialogicaAccentDark: #0a2540;
+        --bulletColor: #cfd7df;
+        --footnoteTextColor: #4d5b78;
+        --disclaimerTextColor: #707f98;
+        --inlineCodeTextColor: #2c3a57;
+        --inlineCodeBackground: #e6ecf2;
+        --socialLogoColor: #c4ccd8;
+        --socialLogoHoverColor: #0a2540;
+      }
+      .theme--White.accent--Slate {
+        --accentColor: #0a2540;
+        --linkHoverOpacity: 0.6;
+        --buttonHoverOpacity: 0.6;
+      }
+      .theme--Light {
+        --backgroundColor: #f6f9fc;
+        --linkColor: var(--accentColor);
+        --linkHoverColor: #0a2540;
+        --buttonColor: var(--accentColor);
+        --buttonHoverColor: #0a2540;
+        --buttonDisabledColor: #cfd7df;
+        --buttonDisabledOpacity: 0.7;
+        --knockoutColor: #fff;
+        --knockoutDisabledColor: #8898aa;
+        --guideSolidColor: rgba(66, 71, 112, 0.06);
+        --guideDashedColor: rgba(66, 71, 112, 0.09);
+        --titleColor: #0a2540;
+        --textColor: #425466;
+        --formFieldDescriptionTextColor: #3f4b66;
+        --inputBackground: #f6f9fc;
+        --checkboxInputBackground: #e7ecf1;
+        --inputPlaceholderColor: #727f96;
+        --inputTextColor: #0a2540;
+        --inputErrorAccentColor: #ff5996;
+        --annotationColor: #8c9eb1;
+        --maskFadeColor: rgba(0, 0, 0, 0.4);
+        --navColor: #0a2540;
+        --navHoverColor: #0a2540;
+        --navHoverOpacity: 0.6;
+        --footerColor: #0a2540;
+        --cardBorderColor: #cbd6e0;
+        --cardBackground: #fff;
+        --subcardBackground: #f6f9fc;
+        --gridSubcardBackground: #fff;
+        --tableIconColor: #8c9eb1;
+        --dialogicaAccentWhite: #fff;
+        --dialogicaAccentLight: #e3e7ec;
+        --dialogicaAccentDark: #0a2540;
+        --bulletColor: #cfd7df;
+        --footnoteTextColor: #4d5b78;
+        --disclaimerTextColor: #707f98;
+        --inlineCodeTextColor: #2c3a57;
+        --inlineCodeBackground: #dce6ee;
+        --socialLogoColor: #c4ccd8;
+        --socialLogoHoverColor: #0a2540;
+      }
+      .theme--Light.accent--Slate {
+        --accentColor: #0a2540;
+        --linkHoverOpacity: 0.6;
+        --buttonHoverOpacity: 0.6;
+      }
+      .theme--Dark {
+        --backgroundColor: #0a2540;
+        --linkColor: var(--accentColor);
+        --linkHoverColor: #fff;
+        --linkHoverOpacity: 1;
+        --buttonColor: var(--accentColor);
+        --buttonHoverColor: #fff;
+        --buttonDisabledColor: #6b7c93;
+        --buttonHoverOpacity: 1;
+        --buttonDisabledOpacity: 0.7;
+        --knockoutColor: #0a2540;
+        --knockoutDisabledColor: #e6ebf1;
+        --guideSolidColor: rgba(66, 71, 112, 0.3);
+        --guideDashedColor: rgba(66, 71, 112, 0.3);
+        --titleColor: #fff;
+        --textColor: #adbdcc;
+        --formFieldDescriptionTextColor: #adbdcc;
+        --inputBackground: #0c2e4e;
+        --checkboxInputBackground: #0c2e4e;
+        --inputBackgroundAlt: #274869;
+        --inputPlaceholderColor: #b6c2cd;
+        --inputTextColor: #fff;
+        --inputErrorAccentColor: #ff5996;
+        --annotationColor: #8c9eb1;
+        --maskFadeColor: rgba(0, 0, 0, 0.4);
+        --navColor: #fff;
+        --navHoverColor: #fff;
+        --navHoverOpacity: 0.6;
+        --footerColor: #fff;
+        --cardBorderColor: #0f395e;
+        --cardBackground: #0c2e4e;
+        --subcardBackground: #1f4468;
+        --gridSubcardBackground: #1f4468;
+        --tableIconColor: #8c9eb1;
+        --dialogicaAccentWhite: #fff;
+        --dialogicaAccentLight: #fff;
+        --dialogicaAccentDark: #0c2e4e;
+        --bulletColor: #6b7c93;
+        --footnoteTextColor: #adbdcc;
+        --disclaimerTextColor: #707f98;
+        --inlineCodeTextColor: #fff;
+        --inlineCodeBackground: #1c4161;
+        --socialLogoColor: #707f98;
+        --socialLogoHoverColor: #fff;
+      }
+      .theme--Dark.accent--Slate,
+      .theme--Dark .accent--Slate {
+        --accentColor: #fff;
+      }
+      .theme--SemiDark {
+        --backgroundColor: #0d2e4f;
+        --linkColor: var(--accentColor);
+        --linkHoverColor: #fff;
+        --linkHoverOpacity: 1;
+        --buttonColor: var(--accentColor);
+        --buttonHoverColor: #fff;
+        --buttonDisabledColor: #6b7c93;
+        --buttonHoverOpacity: 1;
+        --buttonDisabledOpacity: 0.7;
+        --knockoutColor: #0a2540;
+        --knockoutDisabledColor: #e6ebf1;
+        --guideSolidColor: rgba(66, 71, 112, 0.3);
+        --guideDashedColor: rgba(66, 71, 112, 0.3);
+        --titleColor: #fff;
+        --textColor: #adbdcc;
+        --inputBackground: #0c2e4e;
+        --inputBackgroundAlt: #274869;
+        --inputPlaceholderColor: #b6c2cd;
+        --inputTextColor: #fff;
+        --inputErrorAccentColor: #ff5996;
+        --annotationColor: #8c9eb1;
+        --maskFadeColor: rgba(0, 0, 0, 0.4);
+        --navColor: #fff;
+        --navHoverColor: #fff;
+        --navHoverOpacity: 0.6;
+        --footerColor: #fff;
+        --cardBorderColor: #0f395e;
+        --cardBackground: #0c2e4e;
+        --subcardBackground: #1f4468;
+        --gridSubcardBackground: #1f4468;
+        --tableIconColor: #8c9eb1;
+        --dialogicaAccentWhite: #fff;
+        --dialogicaAccentLight: #fff;
+        --dialogicaAccentDark: #0c2e4e;
+        --bulletColor: #6b7c93;
+        --footnoteTextColor: #adbdcc;
+        --disclaimerTextColor: #707f98;
+        --inlineCodeTextColor: #fff;
+        --inlineCodeBackground: #1c4161;
+        --socialLogoColor: #707f98;
+        --socialLogoHoverColor: #fff;
+      }
+      .theme--SemiDark.accent--Slate,
+      .theme--SemiDark .accent--Slate {
+        --accentColor: #fff;
+      }
+      .theme--Transparent {
+        --backgroundColor: none;
+        --linkColor: #fff;
+        --linkHoverColor: var(--linkColor);
+        --linkHoverOpacity: 0.6;
+        --buttonColor: hsla(0, 0%, 100%, 0.2);
+        --buttonHoverColor: hsla(0, 0%, 100%, 0.4);
+        --accentColor: #fff;
+        --knockoutColor: #fff;
+        --textColor: #fff;
+        --guideSolidColor: rgba(66, 71, 112, 0.06);
+        --guideDashedColor: rgba(66, 71, 112, 0.09);
+        --titleColor: #fff;
+        --maskFadeColor: rgba(0, 0, 0, 0.4);
+        --navColor: #fff;
+        --navHoverColor: #fff;
+        --navHoverOpacity: 0.6;
+        --dialogicaColor: #fff;
+      }
+      .theme--HubDark {
+        --linkHoverColor: var(--linkColor);
+        --buttonColor: #fff;
+        --buttonHoverColor: hsla(0, 0%, 100%, 0.9);
+        --knockoutColor: #0a2540;
+        --textColor: #fff;
+        --titleColor: #fff;
+      }
+      .theme--HubDark,
+      .theme--HubLight {
+        --backgroundColor: none;
+        --linkColor: #fff;
+        --linkHoverOpacity: 0.9;
+        --accentColor: #fff;
+        --maskFadeColor: rgba(0, 0, 0, 0.4);
+        --navColor: #fff;
+        --navHoverColor: #fff;
+        --navHoverOpacity: 0.8;
+        --dialogicaColor: #fff;
+      }
+      .theme--HubLight {
+        --linkHoverColor: #0a2540;
+        --buttonColor: #635bff;
+        --buttonHoverColor: #0a2540;
+        --knockoutColor: #fff;
+        --textColor: #0a2540;
+        --titleColor: #0a2540;
+      }
+      .theme--LegacyDark,
+      .theme--LegacyLight {
+        --fontFamily: Camphor, "Open Sans", "Segoe UI", sans-serif;
+        --ctaFont: var(--fontWeightSemibold) 15px/1.6 var(--fontFamily);
+        --fontWeightBold: 600;
+        --fontWeightSemibold: 600;
+        --fontWeightNormal: 500;
+      }
+      .theme--LegacyDark .ProductIcon--Atlas,
+      .theme--LegacyLight .ProductIcon--Atlas {
+        --iconHoverLightColor: #fcd669;
+        --iconHoverDarkColor: #ce7c3a;
+      }
+      .theme--LegacyDark .ProductIcon--Billing,
+      .theme--LegacyLight .ProductIcon--Billing {
+        --iconHoverLightColor: #74e4a2;
+        --iconHoverDarkColor: #159570;
+      }
+      .theme--LegacyDark .ProductIcon--Connect,
+      .theme--LegacyDark .ProductIcon--Payouts,
+      .theme--LegacyLight .ProductIcon--Connect,
+      .theme--LegacyLight .ProductIcon--Payouts {
+        --iconHoverLightColor: #68d4f8;
+        --iconHoverDarkColor: #217ab7;
+      }
+      .theme--LegacyDark .ProductIcon--Capital,
+      .theme--LegacyDark .ProductIcon--CorporateCard,
+      .theme--LegacyDark .ProductIcon--Issuing,
+      .theme--LegacyDark .ProductIcon--Payments,
+      .theme--LegacyDark .ProductIcon--Terminal,
+      .theme--LegacyLight .ProductIcon--Capital,
+      .theme--LegacyLight .ProductIcon--CorporateCard,
+      .theme--LegacyLight .ProductIcon--Issuing,
+      .theme--LegacyLight .ProductIcon--Payments,
+      .theme--LegacyLight .ProductIcon--Terminal {
+        --iconHoverLightColor: #87bbfd;
+        --iconHoverDarkColor: #555abf;
+      }
+      .theme--LegacyDark .ProductIcon--Radar,
+      .theme--LegacyLight .ProductIcon--Radar {
+        --iconHoverLightColor: #f6a4eb;
+        --iconHoverDarkColor: #9251ac;
+      }
+      .theme--LegacyDark .ProductIcon--Sigma,
+      .theme--LegacyLight .ProductIcon--Sigma {
+        --iconHoverLightColor: #beb0f4;
+        --iconHoverDarkColor: #7356b6;
+      }
+      .theme--LegacyLight {
+        --backgroundColor: #f6f9fc;
+        --linkColor: var(--accentColor);
+        --linkHoverColor: #0a2540;
+        --buttonColor: none;
+        --buttonHoverColor: none;
+        --buttonDisabledColor: none;
+        --knockoutColor: #32325d;
+        --knockoutDisabledColor: #8898aa;
+        --guideSolidColor: rgba(66, 71, 112, 0.06);
+        --guideDashedColor: rgba(66, 71, 112, 0.09);
+        --titleColor: #0a2540;
+        --textColor: #425466;
+        --inputBackground: #fff;
+        --inputPlaceholderColor: #acb9c5;
+        --annotationColor: #8c9eb1;
+        --maskFadeColor: rgba(0, 0, 0, 0.4);
+        --navColor: #32325d;
+        --navHoverColor: #32325d;
+        --navHoverOpacity: 0.6;
+        --footerColor: #0a2540;
+        --cardBorderColor: #cbd6e0;
+        --cardBackground: #fff;
+        --subcardBackground: #f6f9fc;
+        --dialogicaColor: #0a2540;
+      }
+      .theme--LegacyLight.accent--Slate {
+        --accentColor: #0a2540;
+        --linkHoverOpacity: 0.6;
+        --buttonHoverOpacity: 0.6;
+      }
+      .theme--LegacyDark {
+        --backgroundColor: #0a2540;
+        --linkColor: var(--accentColor);
+        --linkHoverColor: #fff;
+        --linkHoverOpacity: 1;
+        --buttonColor: none;
+        --buttonHoverColor: none;
+        --buttonDisabledColor: none;
+        --buttonHoverOpacity: 0.6;
+        --knockoutColor: #fff;
+        --knockoutDisabledColor: #e6ebf1;
+        --guideSolidColor: rgba(66, 71, 112, 0.3);
+        --guideDashedColor: rgba(66, 71, 112, 0.3);
+        --titleColor: #fff;
+        --textColor: #adbdcc;
+        --inputBackground: #0c2e4e;
+        --inputPlaceholderColor: #b6c2cd;
+        --annotationColor: #8c9eb1;
+        --maskFadeColor: rgba(0, 0, 0, 0.4);
+        --navColor: #fff;
+        --navHoverColor: #fff;
+        --navHoverOpacity: 0.6;
+        --footerColor: #fff;
+        --cardBorderColor: #0f395e;
+        --cardBackground: #0c2e4e;
+        --subcardBackground: #1f4468;
+        --dialogicaColor: #fff;
+      }
+      .theme--LegacyDark.accent--Slate,
+      .theme--LegacyDark.flavor--Slate.accent--Slate {
+        --accentColor: #fff;
+        --linkHoverOpacity: 0.6;
+        --buttonHoverOpacity: 0.6;
+      }
+      .flavor--Chroma {
+        --blendBackground: #80e9ff;
+        --blendIntersection: #0048e5;
+        --blendForeground: #7a73ff;
+        --gradientColorZero: #a960ee;
+        --gradientColorOne: #ff333d;
+        --gradientColorTwo: #90e0ff;
+        --gradientColorThree: #ffcb57;
+        --gradientColorZeroTransparent: rgba(169, 96, 238, 0);
+        --gradientColorOneTransparent: rgba(255, 51, 61, 0);
+        --gradientColorTwoTransparent: rgba(144, 224, 255, 0);
+        --gradientColorThreeTransparent: rgba(255, 203, 87, 0);
+        --shadeOneColor: #02bcf5;
+        --shadeTwoColor: #0073e6;
+        --shadeThreeColor: #003ab9;
+        --shadeFourColor: #635bff;
+        --shadeFiveColor: #002c59;
+        --shadeSixColor: #09cbcb;
+      }
+      .flavor--Chroma.theme--Dark,
+      .flavor--Chroma .theme--Dark {
+        --blendForeground: #7a73ff;
+        --blendIntersection: #cff;
+        --blendBackground: #00d4ff;
+      }
+      .flavor--Chroma.theme--Dark .theme--Light,
+      .flavor--Chroma.theme--Dark .theme--White {
+        --blendForeground: #80e9ff;
+        --blendIntersection: #0048e5;
+        --blendBackground: #7a73ff;
+      }
+      .flavor--Chroma.accent--Cyan,
+      .flavor--Chroma .accent--Cyan {
+        --accentColor: #02bcf5;
+      }
+      .flavor--Chroma.theme--Dark.accent--Cyan,
+      .flavor--Chroma.theme--Dark .accent--Cyan,
+      .flavor--Chroma .theme--Dark.accent--Cyan {
+        --accentColor: #00d4ff;
+      }
+      .flavor--Chroma.accent--Blurple,
+      .flavor--Chroma .accent--Blurple {
+        --accentColor: #635bff;
+        --guideBackground: #5d69e3;
+        --guideDarkColor: #4d5ae0;
+        --guideLightColor: #6772e5;
+        --guideLighterColor: #7a84e9;
+        --guideLightestColor: #8d95ec;
+      }
+      .flavor--Chroma.theme--Dark.accent--Blurple,
+      .flavor--Chroma.theme--Dark .accent--Blurple {
+        --accentColor: #7a73ff;
+      }
+      .flavor--Chroma.accent--Blue,
+      .flavor--Chroma .accent--Blue {
+        --accentColor: #0073e6;
+      }
+      .flavor--Chroma.accent--Orange,
+      .flavor--Chroma .accent--Orange {
+        --accentColor: #ff7600;
+      }
+      .flavor--Chroma.accent--Slate,
+      .flavor--Chroma .accent--Slate {
+        --accentColor: #0a2540;
+      }
+      .flavor--Chroma.theme--Dark.accent--Slate,
+      .flavor--Chroma.theme--Dark .accent--Slate,
+      .flavor--Chroma .theme--Dark.accent--Slate {
+        --accentColor: #fff;
+      }
+      .flavor--CottonCandy {
+        --blendBackground: #ff80ff;
+        --blendIntersection: #003dc1;
+        --blendForeground: #0073e6;
+        --gradientColorZero: #45dfff;
+        --gradientColorOne: #2aa1ff;
+        --gradientColorTwo: #4536ff;
+        --gradientColorThree: #ff79f6;
+        --gradientColorZeroTransparent: rgba(69, 223, 255, 0);
+        --gradientColorOneTransparent: rgba(42, 161, 255, 0);
+        --gradientColorTwoTransparent: rgba(69, 54, 255, 0);
+        --gradientColorThreeTransparent: rgba(255, 121, 246, 0);
+      }
+      .flavor--CottonCandy.theme--Dark,
+      .flavor--CottonCandy .theme--Dark {
+        --blendBackground: #ff80ff;
+        --blendIntersection: #fac7ff;
+        --blendForeground: #0073e6;
+        --accentColor: #f363f3;
+      }
+      .flavor--CottonCandy.accent--Pink,
+      .flavor--CottonCandy .accent--Pink {
+        --accentColor: #f363f3;
+      }
+      .flavor--CottonCandy.theme--Dark.accent--Pink,
+      .flavor--CottonCandy.theme--Dark .accent--Pink {
+        --accentColor: #ff83ff;
+      }
+      .flavor--CottonCandy.accent--Cyan,
+      .flavor--CottonCandy .accent--Cyan {
+        --accentColor: #02bcf5;
+      }
+      .flavor--CottonCandy.theme--Dark.accent--Cyan,
+      .flavor--CottonCandy.theme--Dark .accent--Cyan {
+        --accentColor: #09d6ff;
+      }
+      .flavor--CottonCandy.accent--Blurple,
+      .flavor--CottonCandy .accent--Blurple {
+        --accentColor: #6061f6;
+      }
+      .flavor--CottonCandy.accent--Blue,
+      .flavor--CottonCandy .accent--Blue {
+        --accentColor: #0073e6;
+      }
+      .flavor--LemonLime {
+        --blendBackground: #ffd848;
+        --blendIntersection: #00a600;
+        --blendForeground: #00d924;
+        --gradientColorZero: #1dcb5d;
+        --gradientColorOne: #ffa832;
+        --gradientColorTwo: #ffa832;
+        --gradientColorThree: #ffe85e;
+        --gradientColorZeroTransparent: rgba(29, 203, 93, 0);
+        --gradientColorOneTransparent: rgba(255, 168, 50, 0);
+        --gradientColorTwoTransparent: rgba(255, 168, 50, 0);
+        --gradientColorThreeTransparent: rgba(255, 232, 94, 0);
+        --shadeOneColor: #72d151;
+        --shadeTwoColor: #15be1c;
+        --shadeThreeColor: #13ad4c;
+        --shadeFourColor: #008431;
+      }
+      .flavor--LemonLime.theme--Dark,
+      .flavor--LemonLime .theme--Dark {
+        --blendBackground: #00d924;
+        --blendIntersection: #fff5ad;
+        --blendForeground: #ffd848;
+      }
+      .flavor--LemonLime.accent--Green,
+      .flavor--LemonLime .accent--Green {
+        --accentColor: #15be53;
+        --complimentaryColor: #fab000;
+      }
+      .flavor--LemonLime.theme--Dark.accent--Green,
+      .flavor--LemonLime.theme--Dark .accent--Green {
+        --accentColor: #14d433;
+      }
+      .flavor--LemonLime.accent--Yellow,
+      .flavor--LemonLime .accent--Yellow {
+        --accentColor: #eea800;
+        --complimentaryColor: #15be53;
+      }
+      .flavor--LemonLime.theme--Dark.accent--Yellow,
+      .flavor--LemonLime.theme--Dark .accent--Yellow,
+      .flavor--LemonLime .theme--Dark.accent--Yellow {
+        --accentColor: #ffce48;
+      }
+      .flavor--Overcast {
+        --blendBackground: #11efe3;
+        --blendIntersection: #00299c;
+        --blendForeground: #0073e6;
+        --gradientColorZero: #0073e6;
+        --gradientColorOne: #00a8ff;
+        --gradientColorTwo: #021b9c;
+        --gradientColorThree: #11efe3;
+        --gradientColorZeroTransparent: rgba(0, 115, 230, 0);
+        --gradientColorOneTransparent: rgba(0, 168, 255, 0);
+        --gradientColorTwoTransparent: rgba(2, 27, 156, 0);
+        --gradientColorThreeTransparent: rgba(47, 229, 229, 0);
+        --shadeOneColor: #009deb;
+        --shadeTwoColor: #0073e6;
+        --shadeThreeColor: #003f7f;
+        --shadeFourColor: #002c59;
+      }
+      .flavor--Overcast.theme--Dark,
+      .flavor--Overcast .theme--Dark {
+        --blendBackground: #11efe3;
+        --blendIntersection: #b3ffff;
+        --blendForeground: #0073e6;
+      }
+      .flavor--Overcast.accent--Blue,
+      .flavor--Overcast .accent--Blue {
+        --accentColor: #0073e6;
+      }
+      .flavor--Overcast.accent--Cyan,
+      .flavor--Overcast .accent--Cyan,
+      .flavor--Overcast.theme--Dark.accent--Cyan,
+      .flavor--Overcast.theme--Dark .accent--Cyan {
+        --accentColor: #02bcf5;
+      }
+      .flavor--Overcast.accent--Teal,
+      .flavor--Overcast .accent--Teal {
+        --accentColor: #00c4c4;
+      }
+      .flavor--Overcast.theme--Dark.accent--Teal,
+      .flavor--Overcast.theme--Dark .accent--Teal {
+        --accentColor: #0de4e4;
+      }
+      .flavor--Perennial {
+        --blendBackground: #ff80ff;
+        --blendIntersection: #003dc1;
+        --blendForeground: #0073e6;
+        --gradientColorZero: #45dfff;
+        --gradientColorOne: #2aa1ff;
+        --gradientColorTwo: #4536ff;
+        --gradientColorThree: #a755fa;
+        --gradientColorZeroTransparent: rgba(69, 223, 255, 0);
+        --gradientColorOneTransparent: rgba(42, 161, 255, 0);
+        --gradientColorTwoTransparent: rgba(69, 54, 255, 0);
+        --gradientColorThreeTransparent: rgba(167, 85, 250, 0);
+      }
+      .flavor--Perennial.theme--Dark,
+      .flavor--Perennial .theme--Dark {
+        --blendBackground: #0073e6;
+        --blendIntersection: #fac7ff;
+        --blendForeground: #ff80ff;
+      }
+      .flavor--Perennial.accent--Blurple,
+      .flavor--Perennial .accent--Blurple {
+        --accentColor: #635bff;
+      }
+      .flavor--Perennial.theme--Dark.accent--Blurple,
+      .flavor--Perennial.theme--Dark .accent--Blurple {
+        --accentColor: #7a73ff;
+      }
+      .flavor--Perennial.accent--Cyan,
+      .flavor--Perennial .accent--Cyan {
+        --accentColor: #02bcf5;
+      }
+      .flavor--Perennial.theme--Dark.accent--Cyan,
+      .flavor--Perennial.theme--Dark .accent--Cyan {
+        --accentColor: #09d6ff;
+      }
+      .flavor--Pomegranate {
+        --blendBackground: #ff5996;
+        --blendIntersection: #6e00f5;
+        --blendForeground: #96f;
+        --gradientColorZero: #a54ddd;
+        --gradientColorOne: #ff80ff;
+        --gradientColorTwo: #ffb422;
+        --gradientColorThree: #fe94d4;
+        --gradientColorZeroTransparent: rgba(255, 89, 150, 0);
+        --gradientColorOneTransparent: rgba(255, 128, 255, 0);
+        --gradientColorTwoTransparent: rgba(255, 180, 34, 0);
+        --gradientColorThreeTransparent: rgba(254, 148, 212, 0);
+        --shadeOneColor: #9d46d5;
+        --shadeTwoColor: #7b58e1;
+        --shadeThreeColor: #635bff;
+        --shadeFourColor: #0a2540;
+      }
+      .flavor--Pomegranate.theme--Dark,
+      .flavor--Pomegranate .theme--Dark {
+        --blendBackground: #ff5996;
+        --blendIntersection: #ffdcf2;
+        --blendForeground: #96f;
+        --accentColor: #ff5996;
+      }
+      .flavor--Pomegranate.accent--Raspberry,
+      .flavor--Pomegranate .accent--Raspberry {
+        --accentColor: #ff5996;
+        --guideBackground: #ff5996;
+        --guideDarkColor: #ff5191;
+        --guideLightColor: #ff74a7;
+        --guideLighterColor: #ff85b2;
+        --guideLightestColor: #ff97bd;
+      }
+      .flavor--Pomegranate.accent--Purple,
+      .flavor--Pomegranate .accent--Purple {
+        --accentColor: #96f;
+        --guideBackground: #a375ff;
+        --guideDarkColor: #96f;
+        --guideLightColor: #b793ff;
+        --guideLighterColor: #b793ff;
+        --guideLightestColor: #c2a3ff;
+      }
+      .flavor--Slate {
+        --blendBackground: #a4bdd2;
+        --blendIntersection: #415465;
+        --blendForeground: #657d92;
+      }
+      .flavor--Slate.theme--Dark,
+      .flavor--Slate .theme--Dark {
+        --blendBackground: #b4d2eb;
+        --blendIntersection: #ecf6ff;
+        --blendForeground: #7995ac;
+      }
+      .flavor--Slate.accent--Slate,
+      .flavor--Slate .accent--Slate {
+        --accentColor: #657d92;
+      }
+      .flavor--Slate.theme--Dark.accent--Slate,
+      .flavor--Slate.theme--Dark .accent--Slate {
+        --accentColor: #b4d2eb;
+      }
+      .flavor--Sunburst {
+        --blendBackground: #ffd848;
+        --blendIntersection: #ff7600;
+        --blendForeground: #fb0;
+        --gradientColorZero: #ff9a15;
+        --gradientColorOne: #ff7600;
+        --gradientColorTwo: #ffa829;
+        --gradientColorThree: #ffdf56;
+        --gradientColorZeroTransparent: rgba(255, 154, 21, 0);
+        --gradientColorOneTransparent: rgba(255, 118, 0, 0);
+        --gradientColorTwoTransparent: rgba(255, 168, 41, 0);
+        --gradientColorThreeTransparent: rgba(255, 223, 86, 0);
+      }
+      .flavor--Sunburst.theme--Dark,
+      .flavor--Sunburst .theme--Dark {
+        --blendBackground: #f70;
+        --blendIntersection: #ffea9e;
+        --blendForeground: #fb0;
+      }
+      .flavor--Sunburst.accent--Yellow,
+      .flavor--Sunburst .accent--Yellow {
+        --accentColor: #fab000;
+      }
+      .flavor--Sunburst.theme--Dark.accent--Yellow,
+      .flavor--Sunburst.theme--Dark .accent--Yellow {
+        --accentColor: #ffce48;
+      }
+      .flavor--Sunburst.accent--Orange,
+      .flavor--Sunburst .accent--Orange {
+        --accentColor: #ff7600;
+      }
+      .flavor--Sunburst.theme--Dark.accent--Orange,
+      .flavor--Sunburst.theme--Dark .accent--Orange {
+        --accentColor: #ff7c0c;
+      }
+      .flavor--Sunset {
+        --blendBackground: #fb0;
+        --blendIntersection: #ad4ffb;
+        --blendForeground: #ff80ff;
+      }
+      .flavor--Sunset.theme--Dark,
+      .flavor--Sunset .theme--Dark {
+        --blendBackground: #ff80ff;
+        --blendIntersection: #ffeeb2;
+        --blendForeground: #fb0;
+      }
+      .flavor--Sunset.accent--Pink,
+      .flavor--Sunset .accent--Pink {
+        --accentColor: #f363f3;
+      }
+      .flavor--Sunset.theme--Dark.accent--Pink,
+      .flavor--Sunset.theme--Dark .accent--Pink {
+        --accentColor: #ff83ff;
+      }
+      .flavor--Sunset.accent--Yellow,
+      .flavor--Sunset .accent--Yellow {
+        --accentColor: #fab000;
+      }
+      .flavor--Sunset.theme--Dark.accent--Yellow,
+      .flavor--Sunset.theme--Dark .accent--Yellow {
+        --accentColor: #ffce48;
+      }
+      .flavor--Tropical {
+        --blendBackground: #80e9ff;
+        --blendIntersection: #0048e5;
+        --blendForeground: #7a73ff;
+        --gradientColorZero: #746dff;
+        --gradientColorOne: #8cf9fb;
+        --gradientColorTwo: #fecc69;
+        --gradientColorThree: #fb80fd;
+        --gradientColorZeroTransparent: rgba(169, 96, 238, 0);
+        --gradientColorOneTransparent: rgba(255, 51, 61, 0);
+        --gradientColorTwoTransparent: rgba(144, 224, 255, 0);
+        --gradientColorThreeTransparent: rgba(255, 203, 87, 0);
+        --shadeOneColor: #02bcf5;
+        --shadeTwoColor: #0073e6;
+        --shadeThreeColor: #003ab9;
+        --shadeFourColor: #635bff;
+        --shadeFiveColor: #002c59;
+        --shadeSixColor: #09cbcb;
+      }
+      .flavor--Tropical.theme--Dark,
+      .flavor--Tropical .theme--Dark {
+        --blendForeground: #7a73ff;
+        --blendIntersection: #cff;
+        --blendBackground: #00d4ff;
+      }
+      .flavor--Tropical.accent--Cyan,
+      .flavor--Tropical .accent--Cyan {
+        --accentColor: #02bcf5;
+      }
+      .flavor--Tropical.theme--Dark.accent--Cyan,
+      .flavor--Tropical.theme--Dark .accent--Cyan,
+      .flavor--Tropical .theme--Dark.accent--Cyan {
+        --accentColor: #00d4ff;
+      }
+      .flavor--Tropical.accent--Blurple,
+      .flavor--Tropical .accent--Blurple {
+        --accentColor: #635bff;
+      }
+      .flavor--Tropical.theme--Dark.accent--Blurple,
+      .flavor--Tropical.theme--Dark .accent--Blurple {
+        --accentColor: #7a73ff;
+      }
+      .flavor--Tropical.accent--Blue,
+      .flavor--Tropical .accent--Blue {
+        --accentColor: #0073e6;
+      }
+      .flavor--Tropical.accent--Slate,
+      .flavor--Tropical .accent--Slate {
+        --accentColor: #0a2540;
+      }
+      .flavor--Tropical.theme--Dark.accent--Slate,
+      .flavor--Tropical.theme--Dark .accent--Slate,
+      .flavor--Tropical .theme--Dark.accent--Slate {
+        --accentColor: #fff;
+      }
+      .flavor--Twilight {
+        --blendBackground: #11efe3;
+        --blendIntersection: #0048e5;
+        --blendForeground: #96f;
+        --gradientColorZero: #4436ff;
+        --gradientColorOne: #56f;
+        --gradientColorTwo: #d679ff;
+        --gradientColorThree: #11efe3;
+        --gradientColorZeroTransparent: rgba(68, 54, 255, 0);
+        --gradientColorOneTransparent: rgba(85, 102, 255, 0);
+        --gradientColorTwoTransparent: rgba(214, 121, 255, 0);
+        --gradientColorThreeTransparent: rgba(4, 255, 255, 0);
+        --shadeOneColor: #16cbe1;
+        --shadeTwoColor: #20b5e3;
+        --shadeThreeColor: #1086db;
+        --shadeFourColor: #1959e6;
+        --shadeFiveColor: #96f;
+        --shadeSixColor: #002c59;
+        --shadeSevenColor: #00c4c4;
+        --shadeEightColor: #635bff;
+      }
+      .flavor--Twilight.theme--Dark,
+      .flavor--Twilight .theme--Dark,
+      .flavor--Twilight.theme--SemiDark,
+      .flavor--Twilight .theme--SemiDark {
+        --blendBackground: #11efe3;
+        --blendIntersection: #c2ffff;
+        --blendForeground: #96f;
+      }
+      .flavor--Twilight.theme--Dark .theme--Light,
+      .flavor--Twilight.theme--Dark .theme--White {
+        --blendForeground: #11efe3;
+        --blendIntersection: #0048e5;
+        --blendBackground: #96f;
+      }
+      .flavor--Twilight.accent--Purple,
+      .flavor--Twilight .accent--Purple {
+        --accentColor: #96f;
+        --guideBackground: #96f;
+        --guideDarkColor: #a375ff;
+        --guideLightColor: #ad85ff;
+        --guideLighterColor: #b793ff;
+        --guideLightestColor: #c2a3ff;
+      }
+      .flavor--Twilight.accent--Teal,
+      .flavor--Twilight .accent--Teal {
+        --accentColor: #00c4c4;
+      }
+      .flavor--Twilight.theme--Dark.accent--Teal,
+      .flavor--Twilight.theme--Dark .accent--Teal,
+      .flavor--Twilight .theme--Dark.accent--Teal,
+      .flavor--Twilight.theme--SemiDark.accent--Teal,
+      .flavor--Twilight.theme--SemiDark .accent--Teal,
+      .flavor--Twilight .theme--SemiDark.accent--Teal {
+        --accentColor: #0de4e4;
+      }
+      .flavor--Wintergreen {
+        --blendBackground: #1df5e9;
+        --blendIntersection: #00a600;
+        --blendForeground: #00d924;
+        --gradientColorZero: #20d261;
+        --gradientColorOne: #1df5e9;
+        --gradientColorTwo: #00ff91;
+        --gradientColorThree: #1df5e9;
+        --gradientColorZeroTransparent: rgba(68, 54, 255, 0);
+        --gradientColorOneTransparent: rgba(85, 102, 255, 0);
+        --gradientColorTwoTransparent: rgba(214, 121, 255, 0);
+        --gradientColorThreeTransparent: rgba(4, 255, 255, 0);
+        --shadeOneColor: #16cbe1;
+        --shadeTwoColor: #20b5e3;
+        --shadeThreeColor: #1086db;
+        --shadeFourColor: #1959e6;
+        --shadeFiveColor: #96f;
+        --shadeSixColor: #002c59;
+        --shadeSevenColor: #00c4c4;
+      }
+      .flavor--Wintergreen.theme--Dark,
+      .flavor--Wintergreen .theme--Dark {
+        --blendBackground: #00d924;
+        --blendIntersection: #cbffef;
+        --blendForeground: #1df5e9;
+      }
+      .flavor--Wintergreen.accent--Green,
+      .flavor--Wintergreen .accent--Green {
+        --accentColor: #15be53;
+      }
+      .flavor--Wintergreen.theme--Dark.accent--Green,
+      .flavor--Wintergreen.theme--Dark .accent--Green {
+        --accentColor: #14d433;
+      }
+      .flavor--Wintergreen.accent--Teal,
+      .flavor--Wintergreen .accent--Teal {
+        --accentColor: #00c4c4;
+      }
+      .flavor--Wintergreen.accent--Teal .theme--Dark,
+      .flavor--Wintergreen.theme--Dark.accent--Teal,
+      .flavor--Wintergreen.theme--Dark .accent--Teal {
+        --accentColor: #0de4e4;
+      }
+      html {
+        --gutterWidth: 16px;
+        --scrollbarWidth: 0px;
+        --windowWidth: calc(100vw - var(--scrollbarWidth));
+        --layoutWidth: calc(var(--windowWidth) - var(--gutterWidth) * 2);
+        --layoutWidthMax: 1080px;
+        --viewportWidthSmall: 375;
+        --viewportWidthMedium: 600;
+        --viewportWidthLarge: 1112;
+        --viewportScale: calc(var(--windowWidth) / var(--viewportWidthLarge));
+        --paddingTop: 160px;
+        --paddingBottom: 160px;
+        --columnPaddingNone: 0;
+        --columnPaddingSmall: 8px;
+        --columnPaddingNormal: 16px;
+        --columnPaddingMedium: 16px;
+        --columnPaddingLarge: 16px;
+        --columnPaddingXLarge: 16px;
+        --rowGapNormal: 8px;
+        --rowGapMedium: 24px;
+        --rowGapLarge: 32px;
+        --rowGapXLarge: 64px;
+        --rowGapXXLarge: 88px;
+        --rowGap: var(--rowGapNormal);
+        --columnCountMax: 1;
+        --columnWidth: calc(var(--layoutWidth) / var(--columnCountMax));
+        --columnMaxWidth: calc(var(--layoutWidthMax) * 0.25);
+        --copyMaxWidth: calc(var(--columnMaxWidth) * 3);
+      }
+      @media (min-width: 600px) {
+        html {
+          --columnPaddingMedium: 32px;
+          --columnPaddingLarge: 64px;
+          --columnPaddingXLarge: 64px;
+          --columnCountMax: 2;
+        }
+      }
+      @media (min-width: 900px) {
+        html {
+          --columnPaddingXLarge: 112px;
+          --columnCountMax: 4;
+        }
+      }
+      @media (min-width: 1112px) {
+        html {
+          --layoutWidth: var(--layoutWidthMax);
+          --gutterWidth: calc(var(--windowWidth) / 2 - var(--layoutWidth) / 2);
+        }
+      }

@@ -1,0 +1,7 @@
+/* Define CSS class */
+.image-style {
+    width: 100vh; /* Example width */
+    height: 100%; /* Maintain aspect ratio */
+    border: 1px solid black; /* Example border */
+    /* Add more styles as needed */
+}

@@ -1,0 +1,643 @@
+.HomepageLogoGrid .Section__layout {
+  --sectionPaddingTop: 0;
+}
+.SiteHeader {
+  --siteMenuTransition: 250ms;
+  --siteMenuArrowSpacing: 13px;
+  --siteMenuArrowOffset: 0;
+  --userLogoColor: var(--navColor);
+  --tabletOverlayDisplay: none;
+  position: relative;
+  z-index: 100;
+  background-color: var(--backgroundColor);
+}
+@media (max-width: 599px) {
+  .SiteHeader {
+    --tabletOverlayDisplay: none;
+  }
+}
+@media (max-width: 899px) {
+  .SiteHeader {
+    --desktopNavDisplay: none;
+  }
+}
+@media (min-width: 900px) {
+  .SiteHeader {
+    --mobileNavDisplay: none;
+    --tabletOverlayDisplay: none;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .SiteHeader {
+    --siteMenuTransition: 1ms;
+  }
+}
+.SiteHeader--noTransitions {
+  --siteMenuTransition: 0ms;
+}
+.SiteHeader.variant--Overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: none;
+}
+@media (min-width: 900px) {
+  .SiteHeader.variant--Fixed {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+  }
+}
+.SiteHeader--hasGuides:after {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  margin: 0;
+  border: none;
+  background: linear-gradient(
+    90deg,
+    var(--guideDashedColor),
+    var(--guideDashedColor) 50%,
+    transparent 0,
+    transparent
+  );
+  background-size: 8px 1px;
+  content: "";
+}
+.SiteHeader--excludesNav {
+  pointer-events: none;
+}
+.SiteHeader--excludesNav .SiteHeader__logo {
+  pointer-events: auto;
+}
+.SiteHeader.theme--Transparent:after {
+  display: none;
+}
+.SiteHeader__guidesContainer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+.SiteHeader.theme--Transparent .SiteHeader__guidesContainer {
+  display: none;
+}
+.SiteHeader__container {
+  position: relative;
+  max-width: calc(var(--columnPaddingNormal) * 2 + var(--layoutWidth));
+  margin: 0 auto;
+  padding: 0 var(--columnPaddingNormal);
+}
+.SiteHeader__navContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  min-height: 56px;
+  padding: 32px var(--columnPaddingNormal) 12px;
+}
+.HubPage .SiteHeader__navContainer {
+  padding-left: 0;
+  padding-right: 0;
+}
+@media (min-width: 900px) {
+  .HubPage .SiteHeader__navContainer,
+  .SiteHeader__navContainer {
+    padding: 12px var(--columnPaddingNormal);
+  }
+}
+@media (pointer: fine) {
+  .SiteHeader__logo {
+    transition: var(--hoverTransition);
+    transition-property: color, opacity;
+  }
+  .SiteHeader__logo:hover {
+    color: var(--navHoverColor);
+    opacity: var(--navHoverOpacity);
+  }
+}
+.SiteHeader__logoLink {
+  display: block;
+  outline: none;
+  padding: 4px;
+  margin: -4px;
+}
+.keyboard-navigation .SiteHeader__logoLink:focus {
+  box-shadow: var(--focusBoxShadow);
+  border-radius: 2px;
+}
+.SiteHeader__ctaNav {
+  display: var(--desktopNavDisplay, initial);
+  white-space: nowrap;
+  overflow: hidden;
+  justify-content: flex-end;
+}
+.SiteHeader__menuNav {
+  display: var(--mobileNavDisplay, initial);
+}
+.SiteHeader__tabletOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(10, 37, 64, 0.05);
+  opacity: 0;
+  transition: opacity ease-out var(--siteMenuTransition);
+  display: var(--tabletOverlayDisplay);
+  z-index: 0;
+}
+@media (min-width: 600px) and (max-width: 899px) {
+  .SiteHeader--mobileMenuVisible .SiteHeader__tabletOverlay {
+    --tabletOverlayDisplay: block;
+    opacity: 1;
+  }
+}
+.SiteHeader__mobileMenuMask {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  display: var(--mobileNavDisplay, flex);
+  justify-content: flex-end;
+  transform: translateY(-100%);
+  transition: ease-out var(--siteMenuTransition);
+  overflow: hidden;
+  z-index: 1;
+  pointer-events: none;
+}
+.SiteHeader--mobileMenuVisible .SiteHeader__mobileMenuMask {
+  transform: translateY(0);
+}
+.SiteHeader__mobileMenu {
+  opacity: 0;
+  transform: translateY(100%);
+  transform-origin: 50% 0;
+  transition: visibility step-end var(--siteMenuTransition),
+    transform ease-out var(--siteMenuTransition),
+    opacity ease-out var(--siteMenuTransition);
+  pointer-events: none;
+  visibility: hidden;
+}
+.SiteHeader--mobileMenuVisible .SiteHeader__mobileMenu {
+  transform: translateY(0);
+  opacity: 1;
+  pointer-events: auto;
+  visibility: visible;
+  transition: visibility step-start var(--siteMenuTransition),
+    transform ease-out var(--siteMenuTransition),
+    opacity ease-out var(--siteMenuTransition);
+}
+@media (min-width: 900px) {
+  .SiteHeader__mobileMenu {
+    display: none;
+  }
+}
+.SiteHeader__menuContainer {
+  display: var(--desktopNavDisplay, block);
+  position: absolute;
+  top: calc(100% - 1px - var(--siteMenuArrowSpacing));
+  left: 0;
+  width: 100%;
+  height: 1000px;
+  z-index: 1;
+  pointer-events: none;
+  perspective: 2000px;
+  overflow: hidden;
+  opacity: 0;
+  transition-property: opacity;
+  transition: var(--siteMenuTransition);
+}
+.SiteHeader--dropdownVisible .SiteHeader__menuContainer {
+  opacity: 1;
+}
+.SiteHeader__menuShadowContainer {
+  position: absolute;
+  inset: 0;
+}
+.SiteHeader__menu {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+.SiteHeader--hasContactSales .SiteHeader__navContainer {
+  -moz-column-gap: 20px;
+  column-gap: 20px;
+}
+html[lang^="de"] .SiteHeader--hasContactSales .SiteHeader__navContainer,
+html[lang^="es"] .SiteHeader--hasContactSales .SiteHeader__navContainer,
+html[lang^="fr"] .SiteHeader--hasContactSales .SiteHeader__navContainer,
+html[lang^="id"] .SiteHeader--hasContactSales .SiteHeader__navContainer,
+html[lang^="nl"] .SiteHeader--hasContactSales .SiteHeader__navContainer {
+  -moz-column-gap: 16px;
+  column-gap: 16px;
+}
+.SiteHeader--hasContactSales .SiteHeader__ctaNav {
+  display: var(--desktopNavDisplay, flex);
+  flex-grow: 1;
+}
+.SiteHeader--hasContactSales .SiteHeader__ctaNavContainer {
+  display: flex;
+  margin-top: 3px;
+  -moz-column-gap: 16px;
+  column-gap: 16px;
+}
+.SiteHeader--hasContactSales
+  .SiteHeader__contactSalesLink.SiteHeader__contactSalesLink--isHidden {
+  position: absolute;
+  visibility: hidden;
+  pointer-events: none;
+}
+.SiteHeader--hasContactSales .SiteHeader__ctaNav .variant--Link {
+  color: var(--linkColor);
+}
+@media (min-width: 900px) {
+  .MktRoot .SiteHeader--isSticky {
+    --easeOutSine: cubic-bezier(0.61, 1, 0.88, 1);
+  }
+  .MktRoot .SiteHeader--isSticky .SiteHeader__stickyShadow {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    transform: translateY(-100%);
+    transition: opacity 0.25s var(--easeOutSine);
+    box-shadow: 0 0 60px rgba(50, 50, 93, 0.18);
+    pointer-events: none;
+    opacity: 0;
+  }
+  .MktRoot .SiteHeader--isSticky.SiteHeader--opaque {
+    --accentColor: #96f;
+    --navColor: #0a2540;
+    --navHoverColor: #0a2540;
+    --linkColor: #0a2540;
+    --linkHoverColor: #0a2540;
+    --linkHoverOpacity: 0.6;
+    --buttonColor: #635bff;
+    --menuBgColor: #eff3f9;
+  }
+  .MktRoot
+    .SiteHeader--isSticky.SiteHeader--opaque
+    .SiteHeader__stickyContainer {
+    background: #fff;
+  }
+  .MktRoot .SiteHeader--isSticky.SiteHeader--opaque .SiteMenu__card.Card {
+    box-shadow: 0 20px 60px rgba(50, 50, 93, 0.18);
+  }
+  .MktRoot .SiteHeader--isSticky.SiteHeader--opaque .SiteSubMenu {
+    --siteSubMenuBackgroundColor: var(--menuBgColor);
+  }
+  .MktRoot
+    .SiteHeader--isSticky.SiteHeader--opaque
+    .SiteHeader__ctaNav
+    .variant--Button {
+    color: var(--textColor);
+    background-color: var(--buttonColor);
+  }
+  .MktRoot
+    .SiteHeader--isSticky.SiteHeader--opaque
+    .SiteHeader__ctaNav
+    .variant--Button:hover {
+    background-color: var(--linkColor);
+  }
+  .MktRoot
+    .SiteHeader--isSticky.SiteHeader--opaque
+    .SiteHeader__ctaNav
+    .variant--Link {
+    color: var(--linkColor);
+  }
+  .MktRoot .SiteHeader--isSticky.SiteHeader--opaque .SiteHeader__stickyShadow {
+    transform: translateY(0);
+  }
+  .MktRoot .SiteHeader--isSticky.SiteHeader--opaque .SiteMenu {
+    padding-top: 0;
+    height: calc(var(--siteMenuHeight));
+  }
+  .MktRoot .SiteHeader--isSticky.SiteHeader--opaque .SiteMenu__card.Card {
+    --cardBackground: var(--menuBgColor);
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+  }
+  .MktRoot .SiteHeader--isSticky.SiteHeader--opaque .SiteHeader__menuContainer {
+    top: 100%;
+    overflow: visible;
+  }
+  .MktRoot
+    .SiteHeader--isSticky.SiteHeader--opaque
+    .SiteHeader__menuShadowContainer {
+    overflow: hidden;
+  }
+  .MktRoot .SiteHeader--isSticky.SiteHeader--opaque .SiteMenu__sectionWrapper {
+    margin: 4px;
+  }
+  .MktRoot .SiteHeader--isSticky.SiteHeader--opaque .SiteMenuSection__body {
+    border-radius: 4px;
+    background: #fff;
+  }
+  .MktRoot .SiteHeader--isSticky.SiteHeader--opaque .SiteMenuSection__footer {
+    --siteMenuFooterMargin: 0px;
+    border-radius: 0;
+    background: var(--menuBgColor);
+  }
+  .MktRoot .SiteHeader--isSticky.SiteHeader--opaque .SiteSubMenu {
+    border-radius: 0;
+  }
+  .MktRoot .SiteHeader--isSticky.SiteHeader--opaque .SiteHeaderArrow {
+    top: -6px;
+    box-shadow: none;
+    --siteHeaderArrowBackgroundColor: var(--menuBgColor);
+  }
+  .MktRoot .SiteHeader--isSticky.SiteHeader--isStuck {
+    position: fixed;
+  }
+  .MktRoot
+    .SiteHeader--isSticky.SiteHeader--noStickyTransitions
+    .SiteHeader__navContainer
+    * {
+    transition: none;
+  }
+}
+
+.Guides {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  left: 0;
+  padding: 0 var(--columnPaddingNormal);
+  pointer-events: none;
+}
+@media (max-width: 1111px) {
+  .Guides {
+    max-width: var(--windowWidth);
+  }
+}
+.Guides__container {
+  display: grid;
+  grid: 1fr / repeat(var(--columnCountMax), 1fr);
+  position: relative;
+  max-width: var(--layoutWidth);
+  height: 100%;
+  margin: 0 auto;
+}
+.Guides__guide {
+  width: 1px;
+  background: linear-gradient(
+    180deg,
+    var(--guideDashedColor),
+    var(--guideDashedColor) 50%,
+    transparent 0,
+    transparent
+  );
+  background-size: 1px 8px;
+}
+.Guides__guide:first-of-type,
+.Guides__guide:last-of-type {
+  background: var(--guideSolidColor);
+}
+.Guides__guide:last-of-type {
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 100%;
+}
+@media (max-width: 599px) {
+  .Guides__guide:nth-of-type(3n) {
+    display: none;
+  }
+}
+@media (max-width: 899px) {
+  .Guides__guide:nth-of-type(2n) {
+    display: none;
+  }
+}
+
+.UserLogo {
+  --userLogoMaxWidth: 160px;
+  display: block;
+}
+@media (max-width: 899px) {
+  .UserLogo {
+    max-width: var(--userLogoMaxWidth);
+  }
+}
+.theme--White .UserLogo.variant--Flat {
+  --userLogoColor: #b2bcc7;
+}
+.theme--Light .UserLogo.variant--Flat {
+  --userLogoColor: #aab4c1;
+}
+.theme--Dark .UserLogo.variant--Flat {
+  --userLogoColor: #fff;
+}
+.UserLogo.variant--Flat {
+  --userLogoColorAlt: var(--backgroundColor);
+}
+.UserLogo.variant--Flat .UserLogo__path--blendModeMultiply {
+  mix-blend-mode: multiply;
+}
+
+.SiteHeaderNavItem + .SiteHeaderNavItem {
+  margin-left: -1px;
+}
+.SiteHeaderNavItem__link,
+.SiteHeaderNavItem__link.Link {
+  --linkColor: var(--navColor);
+  --linkHoverColor: var(--navHoverColor);
+  --linkHoverOpacity: var(--navHoverOpacity);
+  display: block;
+  padding: 10px 20px;
+  font: var(--fontWeightBold) 15px/1.6 var(--fontFamily);
+  letter-spacing: 0.2px;
+  color: var(--navColor);
+  cursor: pointer;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background-color: transparent;
+  border: none;
+  outline: none;
+}
+.SiteHeaderNavItem__link.Link[aria-haspopup="true"],
+.SiteHeaderNavItem__link[aria-haspopup="true"] {
+  cursor: default;
+  transition: var(--hoverTransition);
+  transition-property: color, opacity;
+}
+.SiteHeaderNavItem__link.Link[aria-expanded="true"],
+.SiteHeaderNavItem__link[aria-expanded="true"] {
+  color: var(--linkHoverColor);
+  opacity: var(--linkHoverOpacity);
+}
+.keyboard-navigation .SiteHeaderNavItem__link.Link:focus,
+.keyboard-navigation .SiteHeaderNavItem__link:focus {
+  box-shadow: var(--focusBoxShadow);
+  border-radius: 4px;
+}
+html[lang^="ja"] .SiteHeaderNavItem__link,
+html[lang^="ja"] .SiteHeaderNavItem__link.Link {
+  font-weight: 600;
+  font-variation-settings: "wght" 500;
+}
+.SiteHeader--hasContactSales .SiteHeaderNavItem__link,
+.SiteHeader--hasContactSales .SiteHeaderNavItem__link.Link {
+  padding: 10px 20px;
+}
+html[lang^="de"] .SiteHeader--hasContactSales .SiteHeaderNavItem__link,
+html[lang^="de"] .SiteHeader--hasContactSales .SiteHeaderNavItem__link.Link,
+html[lang^="es"] .SiteHeader--hasContactSales .SiteHeaderNavItem__link,
+html[lang^="es"] .SiteHeader--hasContactSales .SiteHeaderNavItem__link.Link,
+html[lang^="fr"] .SiteHeader--hasContactSales .SiteHeaderNavItem__link,
+html[lang^="fr"] .SiteHeader--hasContactSales .SiteHeaderNavItem__link.Link,
+html[lang^="id"] .SiteHeader--hasContactSales .SiteHeaderNavItem__link,
+html[lang^="id"] .SiteHeader--hasContactSales .SiteHeaderNavItem__link.Link,
+html[lang^="nl"] .SiteHeader--hasContactSales .SiteHeaderNavItem__link,
+html[lang^="nl"] .SiteHeader--hasContactSales .SiteHeaderNavItem__link.Link {
+  padding: 10px 16px;
+}
+
+.Link {
+  font-weight: var(--linkWeight, var(--fontWeightSemibold));
+  cursor: pointer;
+  color: var(--linkColor);
+  opacity: var(--linkOpacity, 1);
+  transition: var(--hoverTransition);
+  transition-property: color, opacity;
+  outline: none;
+}
+@media (pointer: fine) {
+  .Link:hover {
+    color: var(--linkHoverColor, var(--linkColor));
+    opacity: var(--linkHoverOpacity, 1);
+  }
+}
+@media (pointer: coarse) {
+  .Link:active {
+    color: var(--linkHoverColor, var(--linkColor));
+    opacity: var(--linkHoverOpacity, 1);
+  }
+}
+.keyboard-navigation .Link:focus {
+  box-shadow: var(--focusBoxShadow);
+  border-radius: 2px;
+}
+.Link__icon {
+  position: relative;
+  top: 2px;
+  margin: 0 8px 0 0;
+}
+
+.SiteHeaderNav__list {
+  display: var(--desktopNavDisplay, flex);
+  align-items: center;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.CtaButton {
+  display: inline-block;
+  padding: 3px 0 6px;
+  border-radius: 16.5px;
+  font: var(--ctaFont);
+  color: var(--buttonColor);
+  transition: var(--hoverTransition);
+  outline: none;
+}
+.keyboard-navigation .CtaButton:focus {
+  box-shadow: var(--focusBoxShadow);
+}
+html[lang^="ja"] .CtaButton {
+  font-weight: 600;
+  font-variation-settings: "wght" 425;
+}
+.CtaButton.variant--Link {
+  font-weight: var(--linkWeight, var(--fontWeightSemibold));
+  transition-property: color, opacity;
+}
+@media (pointer: fine) {
+  .CtaButton.variant--Link:hover {
+    color: var(--linkHoverColor, var(--linkColor));
+    opacity: var(--linkHoverOpacity, 1);
+  }
+}
+@media (pointer: coarse) {
+  .CtaButton.variant--Link:active {
+    color: var(--linkHoverColor, var(--linkColor));
+    opacity: var(--linkHoverOpacity, 1);
+  }
+}
+.CtaButton.variant--Button {
+  padding-left: 16px;
+  padding-right: 16px;
+  background-color: var(--buttonColor);
+  color: var(--knockoutColor);
+  white-space: nowrap;
+  transition-property: background-color, opacity;
+}
+.CtaButton.variant--Button.CtaButton--arrow {
+  padding-right: 12px;
+}
+@media (pointer: fine) {
+  .CtaButton.variant--Button:hover {
+    background-color: var(--buttonHoverColor, var(--buttonColor));
+    opacity: var(--buttonHoverOpacity, 1);
+  }
+}
+@media (pointer: coarse) {
+  .CtaButton.variant--Button:active {
+    background-color: var(--buttonHoverColor, var(--buttonColor));
+    opacity: var(--buttonHoverOpacity, 1);
+  }
+}
+
+.HoverArrow {
+  --arrowSpacing: 5px;
+  --arrowHoverTransition: 150ms cubic-bezier(0.215, 0.61, 0.355, 1);
+  --arrowHoverOffset: translateX(3px);
+  --arrowTipTransform: none;
+  --arrowLineOpacity: 0;
+  position: relative;
+  top: 1px;
+  margin-left: var(--arrowSpacing);
+  stroke-width: 2px;
+  fill: none;
+  stroke: currentColor;
+}
+.HoverArrow--sizeSmall {
+  --arrowSpacing: 4px;
+  stroke-width: 1.5px;
+}
+.HoverArrow__linePath {
+  opacity: var(--arrowLineOpacity);
+  transition: opacity var(--hoverTransition, var(--arrowHoverTransition));
+}
+.HoverArrow__tipPath {
+  transform: var(--arrowTipTransform);
+  transition: transform var(--hoverTransition, var(--arrowHoverTransition));
+}
+@media (pointer: fine) {
+  a:hover .HoverArrow__linePath,
+  button:hover .HoverArrow__linePath {
+    --arrowLineOpacity: 1;
+  }
+  a:hover .HoverArrow__tipPath,
+  button:hover .HoverArrow__tipPath {
+    --arrowTipTransform: var(--arrowHoverOffset);
+  }
+}
+@media (pointer: coarse) {
+  a:active .HoverArrow__linePath,
+  button:active .HoverArrow__linePath {
+    --arrowLineOpacity: 1;
+  }
+  a:active .HoverArrow__tipPath,
+  button:active .HoverArrow__tipPath {
+    --arrowTipTransform: var(--arrowHoverOffset);
+  }
+}
